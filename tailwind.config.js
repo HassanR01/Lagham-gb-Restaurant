@@ -15,6 +15,10 @@ module.exports = {
       fontFamily: {
         mainFont: ['Tajawal'],
       },
+      colors: {
+        bgColor: '#030712',
+        textColor: '#f9fafb'
+      },
     },
   },
   plugins: [],
