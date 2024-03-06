@@ -18,7 +18,7 @@ header {
 
 section {
   max-width: 1550px;
-  @apply mt-40 w-full flex items-center justify-start flex-col;
+  @apply mt-40 w-full flex items-center justify-start flex-col min-h-screen;
 }
 
 nav ul li {

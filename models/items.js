@@ -10,6 +10,7 @@ const itemSchema = new Schema({
     },
     price: Number,
     description: String,
+    points: Number,
     rate: {
         type: Number,
         default: 5,
