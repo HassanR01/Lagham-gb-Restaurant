@@ -11,10 +11,15 @@ const itemSchema = new Schema({
     price: Number,
     description: String,
     points: Number,
+    size: {
+        type: Boolean,
+        default: false,
+    },
     rate: {
         type: Number,
         default: 5,
     },
+    
 
 }, {timestamps: true})
 

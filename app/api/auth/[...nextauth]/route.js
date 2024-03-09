@@ -36,7 +36,6 @@ const authOptions = {
                     console.log(error);
                 }
             }
-
             return user
         }
     }

@@ -3,6 +3,6 @@ import { signOut } from 'next-auth/react'
 
 export default function LogOut() {
   return (
-      <a href='/' onClick={() => signOut()}>Sign Out</a>
+    <button className='linkRed' onClick={() => signOut()}>Sign Out</button>
   )
 }

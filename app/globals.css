@@ -4,6 +4,10 @@
 @tailwind components;
 @tailwind utilities;
 
+* {
+  box-sizing: border-box;
+}
+
 body {
   min-height: 100vh;
 }
@@ -12,13 +16,21 @@ body {
   @apply w-40 rounded-xl bg-gray-50 flex items-start justify-center p-1 text-xl font-semibold text-gray-950;
 }
 
+.linkRed {
+  @apply w-40 rounded-xl bg-red-500 flex items-start justify-center p-1 text-xl font-semibold text-gray-950;
+}
+
+.btn {
+  @apply rounded-xl bg-gray-50 flex items-start justify-center px-4 py-1 text-xl font-semibold text-gray-950 cursor-pointer;
+}
+
 header {
   height: 25vh;
 }
 
 section {
   max-width: 1550px;
-  @apply mt-40 w-full flex items-center justify-start flex-col min-h-screen;
+  @apply mt-40 w-full flex items-center justify-start flex-col p-9;
 }
 
 nav ul li {
@@ -30,6 +42,11 @@ nav ul li.selected {
 }
 nav ul li.selected::before {
   display: block;
+}
+
+.line {
+  height: 1px;
+  @apply w-full bg-gray-500 my-4;
 }
 
 nav ul li::before {
@@ -100,4 +117,48 @@ nav ul li::before {
   font-size: 1.3rem;
   font-weight: 800;
   color: #00eb5a;
+}
+
+.orderList .list:hover .items {
+  height: 300px;
+}
+
+.sizeChoice {
+  @apply px-12 py-1 border-2 font-semibold hover:bg-textColor hover:text-bgColor cursor-pointer;
+}
+
+input[type="radio"]:checked + .sizeChoice {
+  @apply bg-textColor text-bgColor;
+}
+
+.itemInfo .info {
+  width: calc(80% - 500px);
+  min-width: 500px;
+  margin-top: 30px;
+}
+
+.checkout input {
+  @apply bg-bgColor w-full text-textColor font-mainFont p-1 rounded-lg border-none outline-none mx-1 my-2;
+  border-bottom: 2px solid white;
+}
+
+.outBox {
+  @apply bg-textColor flex items-center justify-start h-6 w-12 rounded-full mr-3 p-1 relative transition-all duration-700;
+}
+
+.inBox {
+  @apply h-5 w-5 bg-bgColor rounded-full cursor-pointer absolute duration-700;
+  left: 2px;
+  top: 50%;
+  transform: translate(0, -50%);
+  -webkit-transform: translate(0, -50%);
+  -moz-transform: translate(0, -50%);
+  -ms-transform: translate(0, -50%);
+  -o-transform: translate(0, -50%);
+}
+.outBox.active {
+  background-color: #00eb5a;
+}
+.inBox.active {
+  left: 26px;
 }

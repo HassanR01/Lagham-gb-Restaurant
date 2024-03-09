@@ -6,7 +6,7 @@ const userSchema = new Schema({
     image: String,
     points: {
         type: Number,
-        default:0,
+        default: 0,
     },
     orders: [
         {
