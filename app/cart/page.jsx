@@ -5,11 +5,14 @@ import React, { useEffect, useState } from 'react'
 
 export default function Basket() {
   const [cart, setCart] = useState([])
-  const [phone, setPhone] = useState('')
-  const [location, setLocation] = useState('')
-  const [paymentMethod, setPaymentMethod] = useState('')
+  const [phone, setPhone] = useState()
+  const [point, setpoint] = useState(0)
+  const [location, setLocation] = useState()
+  const [paymentMethod, setPaymentMethod] = useState()
   const [subBtn, setsubBtn] = useState('Order Now')
-  const [checkBranch, setCheckBranch] = useState('')
+  const [checkBranch, setCheckBranch] = useState("")
+  const [checkUsingPoints, setCheckUsingPoints] = useState("")
+  const [alert, setAlert] = useState()
   const { status, data: session } = useSession()
 
   useEffect(() => {
@@ -17,7 +20,38 @@ export default function Basket() {
     if (CartItems) {
       setCart(JSON.parse(CartItems))
     }
+    const point = localStorage.getItem('Points')
+    if (point) {
+      setpoint(JSON.parse(point))
+    }
   }, [])
+
+  let totalPrice = 0
+  cart.forEach(item => {
+    totalPrice = totalPrice + (item.itemInfo.price * item.quantity)
+  })
+
+  if (checkUsingPoints === 'active') {
+    totalPrice = 0
+  }
+
+  let itemsPoints = 0
+  cart.forEach(item => {
+    itemsPoints = itemsPoints + (item.itemInfo.points * item.quantity)
+  })
+
+  let points = point + totalPrice
+
+  const orders = {
+    name: session?.user?.name,
+    email: session?.user?.email,
+    image: session?.user?.image,
+    items: [...cart],
+    totalPrice: totalPrice - (totalPrice * 0.1),
+    phoneNum: phone,
+    address: location,
+    paymentMethod: paymentMethod
+  }
 
   const clearCart = () => {
     setCart([])
@@ -33,14 +67,6 @@ export default function Basket() {
     localStorage.setItem('CartItems', JSON.stringify(updateCart))
   }
 
-  const handelSendOrderForm = () => {
-    e.preventDefault()
-  }
-
-  let totalPrice = 0
-  cart.forEach(item => {
-    totalPrice = totalPrice + (item.itemInfo.price * item.quantity)
-  })
 
   const handelCheckBranch = () => {
     if (checkBranch === '') {
@@ -49,7 +75,118 @@ export default function Basket() {
     } else {
       setCheckBranch('')
     }
+    setAlert('')
   }
+
+  const useMyPoints = () => {
+    if (checkUsingPoints === '') {
+      setCheckUsingPoints('active')
+      setPaymentMethod('cash on delivery')
+      setpoint(point - itemsPoints)
+    } else {
+      setCheckUsingPoints('')
+    }
+  }
+
+  const handelSendDOrderForm = async (e) => {
+    e.preventDefault()
+    setAlert('يتم مراجعة البيانات')
+    if (cart.length > 0) {
+      if (paymentMethod) {
+        if (phone && location) {
+          const res = await fetch(`api/users/${session?.user?.email}`, {
+            method: 'PUT',
+            headers: {
+              "Content-type": "application/json"
+            },
+            body: JSON.stringify({ orders, points })
+          })
+
+          const resO = await fetch('api/orders', {
+            method: "POST",
+            headers: {
+              "Content-type": "application/json"
+            },
+            body: JSON.stringify(orders)
+          })
+
+
+          if (res.ok && resO.ok) {
+            setPhone('')
+            setLocation('')
+            setAlert(`شكراً، هنتواصل معاك حالاً يا استاذ ${session?.user?.name}`)
+            localStorage.setItem('Points', JSON.stringify(point + totalPrice))
+            setCart([])
+            const updateCart = [...cart]
+            updateCart.splice(0, cart.length)
+            localStorage.setItem('CartItems', JSON.stringify(updateCart))
+          } else {
+            setAlert('غالباً في مشكلة')
+            throw new Error('Cannot Sent The Order')
+          }
+
+        } else {
+          setAlert('رقم التلفون و العنوان مهمين')
+        }
+      } else {
+        setAlert("مش ناوي تدفع!")
+      }
+    } else {
+      setAlert('انت مطلبتش حاجة حضرتك')
+    }
+
+  }
+
+  const handelSendOrderForm = async (e) => {
+    e.preventDefault()
+    setAlert('يتم مراجعة البيانات')
+
+    if (cart.length > 0) {
+
+      if (phone) {
+        const res = await fetch(`api/users/${session?.user?.email}`, {
+          method: 'PUT',
+          headers: {
+            "Content-type": "application/json"
+          },
+          body: JSON.stringify({ orders, points })
+        })
+
+        const resO = await fetch('api/orders', {
+          method: "POST",
+          headers: {
+            "Content-type": "application/json"
+          },
+          body: JSON.stringify(orders)
+        })
+
+
+        if (res.ok && resO.ok) {
+          setPhone('')
+          setLocation('')
+          setAlert(`شكراً، هنتواصل معاك حالاً يا استاذ ${session?.user?.name}`)
+          localStorage.setItem('Points', JSON.stringify(point + totalPrice))
+          setCart([])
+          const updateCart = [...cart]
+          updateCart.splice(0, cart.length)
+          localStorage.setItem('CartItems', JSON.stringify(updateCart))
+        } else {
+          setAlert('غالباً في مشكلة')
+          throw new Error('Cannot Sent The Order')
+        }
+
+      } else {
+        setAlert('ممكن رقم تلفونك ، مش هقوله لحد!')
+      }
+
+    } else {
+      setAlert('انت مطلبتش حاجة حضرتك')
+    }
+
+  }
+
+
+
 
   return (
     <section>
@@ -105,10 +242,19 @@ export default function Basket() {
           </div>
           <div className="line"></div>
           <div className="cash w-full">
+            <h2 className='text-lg font-medium flex items-center justify-between'><span className='text-gray-50 text-lg'>Your Total point</span> <span>{point} Point</span></h2>
+            <h2 className='text-lg font-medium flex items-center justify-between'><span className='text-gray-50 text-lg'>Total Items point</span> <span>{itemsPoints} Point</span></h2>
+            {point > itemsPoints && (<div className="usePoints flex w-full items-center justify-around mt-3">
+              <h3 className=' text-lg font-medium'>Use My Points</h3>
+              <div onClick={() => useMyPoints()} className={`outBox ${checkUsingPoints}`}>
+                <div className={`inBox ${checkUsingPoints}`}></div>
+              </div>
+            </div>
+            )}
+            <div className="line"></div>
             <h2 className='text-xl font-medium flex items-center justify-between'><span className='text-gray-400 text-lg'>Subtotal</span> <span>{totalPrice} EGP</span></h2>
             <h2 className='text-xl font-medium flex items-center justify-between text-red-400'><span className='text-gray-400 text-lg'>Discount</span> <span>-10%</span></h2>
             <h2 className='text-xl font-semibold flex items-center justify-between text-green-300 my-2'><span className='text-gray-50 text-xl'>Total Price</span> <span>{totalPrice - (totalPrice * 0.1)} EGP</span></h2>
-            <h2 className='text-lg font-medium flex items-center justify-between my-2'><span className='text-gray-50 text-lg'>Total Points</span> <span>{totalPrice} Point</span></h2>
           </div>
           <div className="line"></div>
           <div className="check flex w-full justify-between items-center">
@@ -118,20 +264,25 @@ export default function Basket() {
             </div>
           </div>
           {checkBranch === '' ? (
-            <form className='w-full flex flex-col items-center justify-center' onSubmit={handelSendOrderForm}>
+            <form className='w-full flex flex-col items-center justify-center' onChange={() => setAlert('')} onSubmit={handelSendDOrderForm}>
               <input type="tel" name="phone" placeholder='Your Phone Number' value={phone} onChange={(e) => setPhone(e.target.value)} />
               <input type="text" name="location" placeholder='Your Location' value={location} onChange={(e) => setLocation(e.target.value)} />
-              <div className="pay my-6 flex justify-center items-center">
+              <div className="pay my-4 flex justify-center items-center">
                 <input className='hidden' type="radio" name="pay" id="cod" value={'cash on delivery'} onChange={(e) => setPaymentMethod(e.target.value)} />
                 <label className='sizeChoice mr-2' htmlFor="cod">Cash On Delivery</label>
                 <input className='hidden' type="radio" name="pay" id="pol" value={'pay online'} onChange={(e) => setPaymentMethod(e.target.value)} />
                 <label className='sizeChoice' htmlFor="pol">Pay Online</label>
               </div>
+              <h5 className='font-bold text-lg text-red-400 mb-4'>{alert}</h5>
               {status === "authenticated" ? (<button className='btn w-4/5' type='submit'>{subBtn}</button>) : (<div className='btn w-4/5'>Sign In To Order</div>)}
             </form>
           ) : (<>
             <div className="order w-full flex justify-center items-center mt-4">
-              {status === "authenticated" ? (<button className='btn w-4/5' type='submit'>{subBtn}</button>) : (<div className='btn w-4/5'>Sign In To Order</div>)}
+              <form className='w-full flex flex-col items-center justify-center' onChange={() => setAlert('')} onSubmit={handelSendOrderForm} >
+                <input type="tel" name="phone" placeholder='Your Phone Number' value={phone} onChange={(e) => setPhone(e.target.value)} />
+                <h5 className='font-bold text-lg text-red-400'>{alert}</h5>
+                {status === "authenticated" ? (<button className='btn w-4/5 mt-4' type='submit'>{subBtn}</button>) : (<div className='btn w-4/5'>Sign In To Order</div>)}
+              </form>
             </div>
           </>)}
         </div>

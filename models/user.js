@@ -13,7 +13,11 @@ const userSchema = new Schema({
             items: [],
             totalPrice: Number,
             phoneNum: String,
-            address: String
+            address: {
+                type: String,
+                default: 'In The Branch'
+            },
+            paymentMethod: String,
         }
     ]
 }, { timestamps: true })

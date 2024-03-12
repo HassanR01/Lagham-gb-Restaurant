@@ -2,11 +2,13 @@
 import React, { useEffect, useState } from 'react'
 
 export default function AddToCart({ itemInfo }) {
-  const [size, setSize] = useState('')
+  const [size, setSize] = useState('normal')
   const [quantity, setQuantity] = useState(1)
   const [alert, setAlert] = useState('')
   const [cart, setCart] = useState('')
   const item = { itemInfo, quantity, size }
+
+  console.log(itemInfo);
 
   useEffect(() => {
     const CartItems = localStorage.getItem('CartItems')
@@ -17,7 +19,7 @@ export default function AddToCart({ itemInfo }) {
 
   const handelAddToCartForm = (e) => {
     e.preventDefault()
-
+    setAlert('يتم مراجعة البيانات..')
     if (quantity <= 0 || !size) {
       setAlert('!اختار الحجم')
     } else {
@@ -49,12 +51,12 @@ export default function AddToCart({ itemInfo }) {
 
   return (
     <form onSubmit={handelAddToCartForm} onChange={() => setAlert('')}>
-      <div className="size mb-4">
+      {itemInfo.size === 'true' ? (<div className="size mb-4">
         <input className="hidden" type="radio" name="size" id="small" value={'small'} onChange={(e) => setSize(e.target.value)} />
         <label className='sizeChoice rounded-l-xl' htmlFor="small">Small</label>
         <input className='hidden' type="radio" name="size" id="large" value={'large'} onChange={(e) => setSize(e.target.value)} />
         <label className='sizeChoice rounded-r-xl' htmlFor="large">Large</label>
-      </div>
+      </div>) : null}
       <div className="quantity text-xl flex flex-row justify-start items-center mt-8 mb-4">
         <div className='btn cursor-pointer' onClick={() => dic()}>-</div>
         <h3 className='mx-6 text-2xl'>{quantity}</h3>

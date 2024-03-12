@@ -119,7 +119,7 @@ nav ul li::before {
   color: #00eb5a;
 }
 
-.orderList .list:hover .items {
+.orderList .list .order:hover .items {
   height: 300px;
 }
 
@@ -144,6 +144,7 @@ input[type="radio"]:checked + .sizeChoice {
 
 .outBox {
   @apply bg-textColor flex items-center justify-start h-6 w-12 rounded-full mr-3 p-1 relative transition-all duration-700;
+  margin-left: 10px;
 }
 
 .inBox {
@@ -157,8 +158,71 @@ input[type="radio"]:checked + .sizeChoice {
   -o-transform: translate(0, -50%);
 }
 .outBox.active {
-  background-color: #00eb5a;
+  background-color: #00ff22;
 }
 .inBox.active {
   left: 26px;
+}
+
+form h5 {
+  direction: rtl;
+}
+
+/* Dashboard */
+.partIcons ul li {
+  cursor: pointer;
+  padding: 5px 10px;
+}
+
+.partIcons ul li.selected {
+  background-color: black;
+  color: white;
+}
+
+.partitions {
+  width: 100%;
+}
+.partitions > div {
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  display: none;
+}
+
+.partitions > div.active {
+  display: flex;
+}
+
+.partitions > div h2 {
+  font-size: xx-large;
+  font-weight: 600;
+}
+
+.add form {
+  width: 100%;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.add form > div {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  margin: 10px;
+}
+
+.add form input,
+select,
+textarea {
+  @apply bg-bgColor text-textColor font-mainFont p-1 rounded-lg border-none outline-none mx-2 my-2;
+  width: calc(95% / 2);
+  min-width: 300px;
+  max-width: 400px;
+  border-bottom: 2px solid white;
 }

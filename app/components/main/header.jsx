@@ -40,7 +40,7 @@ export default function Header() {
 
             <div className="image absolute -bottom-32 left-2/4 -translate-x-1/2 flex flex-col items-center justify-center text-center">
                 <Image src={logo} width={120} height={120} alt='Lagham logo' className='bg-gray-950 p-4 rounded-full border-gray-50 border-4 mb-3' />
-                <h4 className='title text-2xl mb-2 font-bold '>Lagham Restaurant</h4>
+                <h4 className='title text-textColor text-2xl mb-2 font-bold '>Lagham Restaurant</h4>
                 <h6 className='text text-sm text-gray-400 font-semibold'>Semoha, Elshahed Eltaiar - B/R2 | 0123-456-7899</h6>
             </div>
         </header>

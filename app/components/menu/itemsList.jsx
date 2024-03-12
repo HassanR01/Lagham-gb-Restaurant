@@ -37,6 +37,9 @@ export default async function ItemsList() {
                             <Link className='link' href={`/${item._id}`}>Order</Link>
                         </div>
                     </div>
+                    <div className="points absolute top-1 left-1 py-1 w-28 bg-bgColor rounded-full flex items-center justify-center text-yellow-500 font-semibold">
+                        <h4>{item.points} Point</h4>
+                    </div>
                 </div>
             ))}
         </>
