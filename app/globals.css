@@ -34,7 +34,11 @@ section {
 }
 
 nav ul li {
-  @apply font-bold text-xl relative mx-2 cursor-pointer;
+  @apply font-bold text-xl relative mx-2 cursor-pointer flex flex-col justify-center items-center;
+}
+
+nav ul li img {
+  margin-bottom: 5px;
 }
 
 nav ul li.selected {
@@ -225,4 +229,8 @@ textarea {
   min-width: 300px;
   max-width: 400px;
   border-bottom: 2px solid white;
+}
+
+.items .container .items .item:hover .editItem {
+  height: 300px;
 }

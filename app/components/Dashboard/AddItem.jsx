@@ -6,7 +6,7 @@ export default function AddItem() {
     const [titleEn, setTitleEn] = useState()
     const [category, setCategory] = useState()
     const [image, setImage] = useState()
-    const [price, setPrice] = useState(0)
+    const [price, setPrice] = useState()
     const [description, setDescription] = useState()
     const [points, setPoints] = useState()
     const [size, setSize] = useState("false")
@@ -17,11 +17,11 @@ export default function AddItem() {
         if (size === "true") {
             setSize("false")
             setActivation('')
-            setPrice(price - 50)
+            setPrice(price)
         } else {
             setSize("true")
             setActivation('active')
-            setPrice(+price + 50)
+            setPrice(price)
         }
     }
 
@@ -58,7 +58,6 @@ export default function AddItem() {
 
     return (
         <>
-            <h2>Add Item</h2>
             <form onSubmit={handelAddItemForm} onChange={() => setAlert('')}>
                 <div className="title">
                     <input placeholder='English Title' type="text" name="titleAr" value={titleEn} onChange={(e) => setTitleEn(e.target.value)} />
