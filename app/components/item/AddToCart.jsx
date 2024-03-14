@@ -20,7 +20,7 @@ export default function AddToCart({ itemInfo }) {
   const handelAddToCartForm = (e) => {
     e.preventDefault()
     setAlert('يتم مراجعة البيانات..')
-    if (quantity <= 0 || !size) {
+    if (quantity <= 0 || itemInfo.size === "true" && size === 'normal') {
       setAlert('!اختار الحجم')
     } else {
       const updateCart = [...cart, item]

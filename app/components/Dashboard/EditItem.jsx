@@ -1,10 +1,114 @@
-import React from 'react'
+'use client'
+import React, { useState } from 'react'
 
-export default function EditItem() {
+export default function EditItem({ item }) {
+    const { titleEn, titleAr, category, image, price, description, points, size } = item
+    const [newtitleEn, setNewtitleEn] = useState(titleEn)
+    const [newtitleAr, setNewtitleAr] = useState(titleAr)
+    const [newcategory, setNewcategory] = useState(category)
+    const [newimage, setNewimage] = useState(image)
+    const [newprice, setNewprice] = useState(price)
+    const [newdescription, setNewdescription] = useState(description)
+    const [newpoints, setNewpoints] = useState(points)
+    const [newsize, setNewsize] = useState(size)
+    const [activation, setActivation] = useState(`${size === 'true' ? 'active' : ''}`)
+    const [alert, setAlert] = useState()
+
+    const handelSizeChecker = () => {
+        if (newsize === 'true') {
+            setActivation('')
+            setNewsize('false')
+        } else {
+            setActivation('active')
+            setNewsize('true')
+        }
+    }
+
+    const handelEditItemForm = async (e) => {
+        e.preventDefault()
+        setAlert('يتم مراجعة البيانات..')
+        if (newtitleAr && newtitleEn && newcategory && newimage && newprice && newdescription && newpoints && newsize) {
+            try {
+                const res = await fetch(`api/items/${item._id}`, {
+                    method: "PUT",
+                    headers: {
+                        'Content-type': 'application/json'
+                    },
+                    body: JSON.stringify({ newtitleAr, newtitleEn, newcategory, newimage, newprice, newdescription, newpoints, newsize })
+                })
+
+                if (res.ok) {
+                    setAlert('تم تعديل الصنف')
+                    location.reload()
+                } else {
+                    setAlert('تقريباً في مشكلة')
+                }
+
+
+            } catch (error) {
+                console.log(error);
+            }
+        } else {
+            setAlert('كل البيانات مهمة')
+        }
+    }
+
+
+    const DeleteItem = async (id) => {
+        if (confirm('هل تريد حذف هذا الصنف ؟')) {
+            
+            try {
+                const res = await fetch(`api/items/${id}`, {
+                    method: 'DELETE'
+                })
+                
+                if (res.ok) {
+                    setAlert('تم الحذف')
+                    location.reload()
+                }
+            } catch (error) {
+                console.log(error);
+            }
+        }
+    }
+
     return (
         <>
-            <form>
-
+            <form onSubmit={handelEditItemForm}>
+                <div className="title">
+                    <input placeholder='English Title' type="text" name="titleAr" value={newtitleEn} onChange={(e) => setNewtitleEn(e.target.value)} />
+                    <input className=' text-right' placeholder='العنوان العربي' type="text" name="titleEn" value={newtitleAr} onChange={(e) => setNewtitleAr(e.target.value)} />
+                </div>
+                <div className="details">
+                    <select placeholder='Item Category' name="category" value={newcategory} onChange={(e) => setNewcategory(e.target.value)}>
+                        <option value=""></option>
+                        <option value="smash_burger">Smash Burger</option>
+                        <option value="extras">Extras</option>
+                        <option value="meals">Meals</option>
+                        <option value="chichen_sandwiches">Chicken Sandwiches</option>
+                        <option value="fries">Fries</option>
+                    </select>
+                    <input placeholder='Link Image In Cloudnary' type="text" name="image" value={newimage} onChange={(e) => setNewimage(e.target.value)} />
+                    <input placeholder='Price' type="number" name="price" value={newprice} onChange={(e) => setNewprice(e.target.value)} />
+                    <input placeholder='Points' type="nunber" name="point" value={newpoints} onChange={(e) => setNewpoints(e.target.value)} />
+                </div>
+                <div className="checksize">
+                    <h4 className='text-xl font-medium'>Is This Item has size choice ?</h4>
+                    <div className={`outBox ${activation}`} onClick={() => handelSizeChecker()}>
+                        <div className={`inBox ${activation}`}></div>
+                    </div>
+                    <p>{size ? (<>Yes</>) : (<>No</>)}</p>
+                </div>
+                <div className="description">
+                    <textarea placeholder='Description about The Item' type="text" name="description" value={newdescription} onChange={(e) => setNewdescription(e.target.value)}></textarea>
+                </div>
+                <div className="submit flex-col">
+                    <h5 className=' text-red-400 font-medium text-lg my-2'>{alert}</h5>
+                    <div className="btns flex">
+                        <button type="submit" className='btn w-32 mx-4'>Edit</button>
+                        <div onClick={() => DeleteItem(item._id)} className='linkRed cursor-pointer'>Delete</div>
+                    </div>
+                </div>
             </form>
         </>
     )

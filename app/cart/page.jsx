@@ -1,5 +1,5 @@
 'use client'
-import { useSession } from 'next-auth/react'
+import { signIn, useSession } from 'next-auth/react'
 import Image from 'next/image'
 import React, { useEffect, useState } from 'react'
 
@@ -81,7 +81,7 @@ export default function Basket() {
   const useMyPoints = () => {
     if (checkUsingPoints === '') {
       setCheckUsingPoints('active')
-      setPaymentMethod('cash on delivery')
+      setPaymentMethod('Paid By Points')
       setpoint(point - itemsPoints)
     } else {
       setCheckUsingPoints('')
@@ -274,14 +274,14 @@ export default function Basket() {
                 <label className='sizeChoice' htmlFor="pol">Pay Online</label>
               </div>
               <h5 className='font-bold text-lg text-red-400 mb-4'>{alert}</h5>
-              {status === "authenticated" ? (<button className='btn w-4/5' type='submit'>{subBtn}</button>) : (<div className='btn w-4/5'>Sign In To Order</div>)}
+              {status === "authenticated" ? (<button className='btn w-4/5' type='submit'>{subBtn}</button>) : (<div onClick={() => signIn('google')} className='btn w-4/5'>Sign In To Order</div>)}
             </form>
           ) : (<>
             <div className="order w-full flex justify-center items-center mt-4">
               <form className='w-full flex flex-col items-center justify-center' onChange={() => setAlert('')} onSubmit={handelSendOrderForm} >
                 <input type="tel" name="phone" placeholder='Your Phone Number' value={phone} onChange={(e) => setPhone(e.target.value)} />
                 <h5 className='font-bold text-lg text-red-400'>{alert}</h5>
-                {status === "authenticated" ? (<button className='btn w-4/5 mt-4' type='submit'>{subBtn}</button>) : (<div className='btn w-4/5'>Sign In To Order</div>)}
+                {status === "authenticated" ? (<button className='btn w-4/5 mt-4' type='submit'>{subBtn}</button>) : (<div onClick={() => signIn('google')} className='btn w-4/5'>Sign In To Order</div>)}
               </form>
             </div>
           </>)}

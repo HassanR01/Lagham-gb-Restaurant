@@ -232,5 +232,45 @@ textarea {
 }
 
 .items .container .items .item:hover .editItem {
-  height: 300px;
+  height: 500px;
+}
+
+.editItem form {
+  width: 100%;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.editItem form > div {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  margin: 10px;
+}
+
+.editItem form input,
+select,
+textarea {
+  @apply bg-bgColor text-textColor font-mainFont p-1 rounded-lg border-none outline-none mx-2 my-2;
+  width: calc(95% / 2);
+  min-width: 300px;
+  max-width: 400px;
+  border-bottom: 2px solid white;
+}
+
+.users .users .user {
+  width: calc(90% / 3);
+  min-width: 300px;
+  height: 230px;
+  margin: 10px;
+}
+
+.users .users .user .data .image {
+  width: 100px;
+  min-width: 100px;
 }
