@@ -71,17 +71,18 @@ export default function AddItem() {
                         <option value="meals">Meals</option>
                         <option value="chichen_sandwiches">Chicken Sandwiches</option>
                         <option value="fries">Fries</option>
+                        <option value="offer">Offer</option>
                     </select>
                     <input placeholder='Link Image In Cloudnary' type="text" name="image" value={image} onChange={(e) => setImage(e.target.value)} />
                     <input placeholder='Price' type="number" name="price" value={price} onChange={(e) => setPrice(e.target.value)} />
                     <input placeholder='Points' type="nunber" name="point" value={points} onChange={(e) => setPoints(e.target.value)} />
                 </div>
                 <div className="checksize">
-                    <h4 className='text-xl font-medium'>Is This Item has size choice ?</h4>
+                    <h4 className='text-lg font-medium'>Is This Item has size choice ?</h4>
+                    <p className='ml-1'>{size === 'true' ? (<>Yes</>) : (<>No</>)}</p>
                     <div className={`outBox ${activation}`} onClick={() => handelSizeChecker()}>
                         <div className={`inBox ${activation}`}></div>
                     </div>
-                    <p>{size ? (<>Yes</>) : (<>No</>)}</p>
                 </div>
                 <div className="description">
                     <textarea placeholder='Description about The Item' type="text" name="description" value={description} onChange={(e) => setDescription(e.target.value)}></textarea>

@@ -6,7 +6,5 @@ export default function TotalPrice({ user }) {
     orders.forEach(order => {
         totalPaid = totalPaid + order.totalPrice
     });
-    console.log(totalPaid);
-
   return (<>{totalPaid} EGP</>)
 }

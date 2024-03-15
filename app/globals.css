@@ -75,7 +75,6 @@ nav ul li::before {
 }
 
 .card {
-  width: calc(90% / 3);
   @apply flex flex-col items-center justify-center text-center m-5 w-80 h-80 overflow-hidden relative;
   display: none;
 }
@@ -128,7 +127,7 @@ nav ul li::before {
 }
 
 .sizeChoice {
-  @apply px-12 py-1 border-2 font-semibold hover:bg-textColor hover:text-bgColor cursor-pointer;
+  @apply px-3 py-1 border-2 font-semibold hover:bg-textColor hover:text-bgColor cursor-pointer sm:px-12;
 }
 
 input[type="radio"]:checked + .sizeChoice {
@@ -147,7 +146,7 @@ input[type="radio"]:checked + .sizeChoice {
 }
 
 .outBox {
-  @apply bg-textColor flex items-center justify-start h-6 w-12 rounded-full mr-3 p-1 relative transition-all duration-700;
+  @apply bg-textColor flex items-center justify-start h-6 w-12 rounded-full ml-3 p-1 relative transition-all duration-700;
   margin-left: 10px;
 }
 
@@ -273,4 +272,135 @@ textarea {
 .users .users .user .data .image {
   width: 100px;
   min-width: 100px;
+}
+
+/* Mobile View Style For All Website */
+
+@media (max-width: 780px) {
+  section {
+    padding: 10px;
+  }
+
+  #Menu .menuList nav {
+    position: relative;
+  }
+  #Menu .menuList nav ul {
+    overflow: scroll;
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  #Menu .menuList nav::before {
+    content: "";
+    position: absolute;
+    height: 100%;
+    width: 60px;
+    background: linear-gradient(
+      270deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(3, 7, 18, 1) 91%
+    );
+    top: 0;
+    left: -5px;
+    z-index: 100;
+  }
+
+  #Menu .menuList nav::after {
+    content: "";
+    position: absolute;
+    height: 100%;
+    width: 60px;
+    background: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(3, 7, 18, 1) 91%
+    );
+    top: 0;
+    right: -5px;
+    z-index: 100;
+  }
+
+  #Menu .menuList nav ul li {
+    min-width: 180px;
+  }
+
+  #Menu .menuList .items .card {
+    width: 180px;
+    height: 180px;
+    margin: 10px;
+  }
+
+  #Menu .menuList .items .card .text {
+    padding: 5px;
+  }
+
+  #Menu .menuList .items .card .text h4 {
+    margin: 2px 0;
+    font-size: 0.8rem;
+  }
+  #Menu .menuList .items .card .text .link {
+    color: #008600;
+    padding: 2px;
+    width: 100px;
+    font-size: 0.8rem;
+    line-height: 20px;
+    font-weight: 700;
+  }
+
+  #profile .orders .orderList h3 {
+    font-size: 1rem;
+  }
+
+  .ordersList .orders .order h3 {
+    font-size: 0.8rem;
+  }
+
+  .items .container h3 {
+    font-size: 1rem;
+    margin: 5px;
+  }
+  .items .container .items .item .details {
+    padding: 5px;
+  }
+}
+
+@media (max-width: 580px) {
+  #profile .orders {
+    padding: 10px;
+  }
+  #profile .orders .orderList {
+    width: 100%;
+    padding: 10px;
+  }
+  #profile .orders .orderList .list {
+    overflow: scroll;
+  }
+  #profile .orders .orderList .list h3 {
+    font-size: 0.8rem;
+  }
+  #Menu .menuList .items .card {
+    width: 170px;
+    height: 170px;
+  }
+  .items .container {
+    padding: 10px;
+  }
+  .items .container .items {
+    padding: 10px;
+  }
+  .items .container .items .item .details .titles img {
+    width: 50px;
+    height: 50px;
+  }
+}
+
+@media (max-width: 420px) {
+  #Menu .menuList .items .card {
+    width: 150px;
+    height: 150px;
+  }
+
+  .items .container h3 {
+    font-size: 0.8rem;
+  }
 }

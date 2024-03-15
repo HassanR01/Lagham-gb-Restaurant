@@ -28,14 +28,14 @@ export default async function Profile({ searchParams }) {
   const { orders } = user
   console.log(orders[3]);
   return (
-    <section>
-      <div className="userInfo flex flex-row flex-wrap w-full justify-around items-center pb-4">
-        <div className="mainInfo text-xl">
+    <section id='profile'>
+      <div className="userInfo flex flex-col sm:flex-row w-full justify-around items-center pb-4">
+        <div className="mainInfo text-xl m-2 mb-8 flex flex-col items-center justify-center sm:items-start">
           <Image src={user.image} className='image rounded-full border-4 my-2' width={120} height={120} alt='Profile pic' />
           <h3 className='font-semibold text-2xl'>{user.name}</h3>
           <h4>{user.email}</h4>
         </div>
-        <div className="add text-xl font-semibold flex flex-col justify-center items-start">
+        <div className="add text-xl sm:w-auto flex flex-col font-semibold justify-center items-center sm:items-start">
           <h4>{user.points} Points</h4>
           <h4 className=' py-2'>{orders.length} Orders</h4>
           <a href="/" className='link'>Menu</a>
@@ -50,7 +50,7 @@ export default async function Profile({ searchParams }) {
             <h3>Phone</h3>
             <h3>Status</h3>
           </div>
-          <div className="list w-full flex flex-col justify-center items-center bg-gray-900 rounded-lg px-2">
+          <div className="list w-full max-h-80 sm:max-h-max flex overflow-scroll sm:overflow-hidden flex-col justify-start items-center bg-gray-900 rounded-lg px-2">
             {orders.length > 0 && orders.map(order => (
               <div className="order w-full flex flex-col items-center justify-around border-x-4 rounded-lg bg-bgColor text-2xl m-2" key={order._id}>
                 <div className="info w-full flex items-center justify-around p-2">

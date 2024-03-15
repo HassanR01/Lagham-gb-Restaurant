@@ -32,12 +32,11 @@ export default async function ItemsList() {
                     <div className="text">
                         <h4>{item.titleEn}</h4>
                         <h4>{item.titleAr}</h4>
-                        <h3>{item.price} L.E</h3>
-                        <div className="links flex items-center justify-center w-full flex-wrap">
-                            <Link className='link' href={`/${item._id}`}>Order</Link>
+                        <div className="links flex items-center justify-center flex-wrap">
+                            <Link className='link' href={`/${item._id}`}>{item.price} L.E</Link>
                         </div>
                     </div>
-                    <div className="points absolute top-1 left-1 py-1 w-28 bg-bgColor rounded-full flex items-center justify-center text-yellow-500 font-semibold">
+                    <div className="points absolute top-1 left-1 py-1 px-2 bg-opacity-50 bg-bgColor rounded-full flex items-center justify-center text-yellow-500 font-semibold text-sm lg:text-xl">
                         <h4>{item.points} Point</h4>
                     </div>
                 </div>

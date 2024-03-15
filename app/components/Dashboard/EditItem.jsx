@@ -11,7 +11,7 @@ export default function EditItem({ item }) {
     const [newdescription, setNewdescription] = useState(description)
     const [newpoints, setNewpoints] = useState(points)
     const [newsize, setNewsize] = useState(size)
-    const [activation, setActivation] = useState(`${size === 'true' ? 'active' : ''}`)
+    const [activation, setActivation] = useState(`${newsize === 'true' ? 'active' : ''}`)
     const [alert, setAlert] = useState()
 
     const handelSizeChecker = () => {
@@ -56,12 +56,12 @@ export default function EditItem({ item }) {
 
     const DeleteItem = async (id) => {
         if (confirm('هل تريد حذف هذا الصنف ؟')) {
-            
+
             try {
                 const res = await fetch(`api/items/${id}`, {
                     method: 'DELETE'
                 })
-                
+
                 if (res.ok) {
                     setAlert('تم الحذف')
                     location.reload()
@@ -93,11 +93,11 @@ export default function EditItem({ item }) {
                     <input placeholder='Points' type="nunber" name="point" value={newpoints} onChange={(e) => setNewpoints(e.target.value)} />
                 </div>
                 <div className="checksize">
-                    <h4 className='text-xl font-medium'>Is This Item has size choice ?</h4>
+                    <h4 className='text-lg font-medium'>Is This Item has size choice ?</h4>
+                    <p className='ml-1'>{activation === 'active' ? (<>Yes</>) : (<>No</>)}</p>
                     <div className={`outBox ${activation}`} onClick={() => handelSizeChecker()}>
                         <div className={`inBox ${activation}`}></div>
                     </div>
-                    <p>{size ? (<>Yes</>) : (<>No</>)}</p>
                 </div>
                 <div className="description">
                     <textarea placeholder='Description about The Item' type="text" name="description" value={newdescription} onChange={(e) => setNewdescription(e.target.value)}></textarea>

@@ -10,7 +10,7 @@ export default function Menu() {
   return (
     <>
       <section id="Menu">
-        <h1 className="title text-4xl font-bold mb-10 text-gray-50">Check Our Tasty Menu</h1>
+        <h1 className="title text-2xl font-bold mb-10 text-gray-50 text-center sm:text-4xl">Check Our Tasty Menu</h1>
         <div className="menuList w-full flex flex-col items-center justify-center">
           <nav className="w-full flex justify-center items-center">
             <ul className="w-full flex justify-around items-center px-4 py-4">

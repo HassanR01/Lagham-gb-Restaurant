@@ -191,9 +191,9 @@ export default function Basket() {
   return (
     <section>
 
-      <div className="cartPage w-full flex justify-between items-start">
+      <div className="cartPage w-full flex justify-center items-start flex-wrap">
         {/* Cart */}
-        <div className="cartCon w-3/5">
+        <div className="cartCon w-full xl:w-3/5">
           <div className="cart border border-gray-500 p-5 rounded-xl flex flex-col items-center justify-center">
             <div className="head flex justify-between items-center w-full">
               <h2 className='text-3xl font-medium'>Cart <span className='text-lg text-gray-400'>({cart.length} items)</span></h2>
@@ -236,7 +236,7 @@ export default function Basket() {
         </div>
 
         {/* Checkout */}
-        <div className="checkout w-2/5 ml-4 rounded-xl border border-gray-500 p-5">
+        <div className="checkout w-full rounded-xl border border-gray-500 my-4 p-5 xl:w-2/6 xl:ml-4 xl:my-0">
           <div className="head">
             <h2 className='text-3xl font-medium'>Checkout</h2>
           </div>
