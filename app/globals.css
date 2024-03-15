@@ -127,7 +127,7 @@ nav ul li::before {
 }
 
 .sizeChoice {
-  @apply px-3 py-1 border-2 font-semibold hover:bg-textColor hover:text-bgColor cursor-pointer sm:px-12;
+  @apply py-1 border-2 font-semibold hover:bg-textColor hover:text-bgColor cursor-pointer sm:px-12;
 }
 
 input[type="radio"]:checked + .sizeChoice {
@@ -362,9 +362,47 @@ textarea {
   .items .container .items .item .details {
     padding: 5px;
   }
+  .itemInfo .image img {
+    width: 300px;
+    height: 300px;
+  }
+  .itemInfo .info {
+    min-width: auto;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .itemInfo .info .main {
+    width: 100%;
+  }
+  .itemInfo .info form {
+    width: 100%;
+  }
 }
 
 @media (max-width: 580px) {
+  header {
+    height: 20vh;
+  }
+  section {
+    margin: 70px 0 30px 0;
+  }
+  header .image {
+    bottom: -110px;
+  }
+  header .image img {
+    width: 80px;
+    height: 80px;
+  }
+
+  header .image h4 {
+    font-size: 1.4rem;
+  }
+  header .image h6 {
+    font-size: 0.8rem;
+  }
   #profile .orders {
     padding: 10px;
   }
@@ -396,8 +434,8 @@ textarea {
 
 @media (max-width: 420px) {
   #Menu .menuList .items .card {
-    width: 150px;
-    height: 150px;
+    width: 230px;
+    height: 230px;
   }
 
   .items .container h3 {

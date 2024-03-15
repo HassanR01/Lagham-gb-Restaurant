@@ -29,7 +29,7 @@ export default async function Item({ params }) {
     <section>
       <div className="itemInfo w-full flex flex-wrap justify-around items-center my-9">
         <div className="image">
-          <Image src={image} width={400} height={400} alt={titleAr} />
+          <Image className='rounded-xl' src={image} width={400} height={400} alt={titleAr} />
         </div>
         <div className="info flex flex-col justify-between mx-4">
           <div className="main mb-12 relative">

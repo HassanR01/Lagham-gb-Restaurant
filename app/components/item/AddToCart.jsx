@@ -51,13 +51,16 @@ export default function AddToCart({ itemInfo }) {
 
   return (
     <form onSubmit={handelAddToCartForm} onChange={() => setAlert('')}>
-      {itemInfo.size === 'true' ? (<div className="size mb-4">
-        <input className="hidden" type="radio" name="size" id="small" value={'small'} onChange={(e) => setSize(e.target.value)} />
-        <label className='sizeChoice rounded-l-xl' htmlFor="small">Small</label>
-        <input className='hidden' type="radio" name="size" id="large" value={'large'} onChange={(e) => setSize(e.target.value)} />
-        <label className='sizeChoice rounded-r-xl' htmlFor="large">Large</label>
-      </div>) : null}
-      <div className="quantity text-xl flex flex-row justify-start items-center mt-8 mb-4">
+      <h2 className='text-xl font-medium'>Choose Size:</h2>
+      {itemInfo.size === 'true' ? (
+        <div className="size flex items-center justify-center my-4">
+          <input className="hidden" type="radio" name="size" id="small" value={'small'} onChange={(e) => setSize(e.target.value)} />
+          <label className='sizeChoice px-10 rounded-l-xl' htmlFor="small">Small</label>
+          <input className='hidden' type="radio" name="size" id="large" value={'large'} onChange={(e) => setSize(e.target.value)} />
+          <label className='sizeChoice px-10 rounded-r-xl' htmlFor="large">Large</label>
+        </div>
+      ) : null}
+      <div className="quantity text-xl flex flex-row sm:justify-start justify-around items-center mt-8 mb-4">
         <div className='btn cursor-pointer' onClick={() => dic()}>-</div>
         <h3 className='mx-6 text-2xl'>{quantity}</h3>
         <div className='btn cursor-pointer' onClick={() => inc()}>+</div>

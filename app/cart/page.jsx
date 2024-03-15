@@ -269,9 +269,9 @@ export default function Basket() {
               <input type="text" name="location" placeholder='Your Location' value={location} onChange={(e) => setLocation(e.target.value)} />
               <div className="pay my-4 flex justify-center items-center">
                 <input className='hidden' type="radio" name="pay" id="cod" value={'cash on delivery'} onChange={(e) => setPaymentMethod(e.target.value)} />
-                <label className='sizeChoice mr-2' htmlFor="cod">Cash On Delivery</label>
+                <label className='sizeChoice px-3 mr-2' htmlFor="cod">Cash On Delivery</label>
                 <input className='hidden' type="radio" name="pay" id="pol" value={'pay online'} onChange={(e) => setPaymentMethod(e.target.value)} />
-                <label className='sizeChoice' htmlFor="pol">Pay Online</label>
+                <label className='sizeChoice px-3' htmlFor="pol">Pay Online</label>
               </div>
               <h5 className='font-bold text-lg text-red-400 mb-4'>{alert}</h5>
               {status === "authenticated" ? (<button className='btn w-4/5' type='submit'>{subBtn}</button>) : (<div onClick={() => signIn('google')} className='btn w-4/5'>Sign In To Order</div>)}
