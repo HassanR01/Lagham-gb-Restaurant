@@ -26,7 +26,7 @@ export default async function Profile({ searchParams }) {
   const email = searchParams.email
   const { user } = await getUser(email)
   const { orders } = user
-  console.log(orders[3]);
+
   return (
     <section id='profile'>
       <div className="userInfo flex flex-col sm:flex-row w-full justify-around items-center pb-4">
