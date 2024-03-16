@@ -339,11 +339,12 @@ textarea {
   }
 
   #Menu .menuList .items .card .text h4 {
-    margin: 2px 0;
-    font-size: 0.8rem;
+    margin: 0;
+    font-size: 1rem;
   }
   #Menu .menuList .items .card .text .link {
     padding: 2px;
+    margin-bottom: 5px;
     width: 100px;
     font-size: 0.8rem;
     line-height: 20px;
@@ -382,6 +383,14 @@ textarea {
   }
   .itemInfo .info form {
     width: 100%;
+  }
+  .items .container .items .item:hover .editItem {
+    height: 650px;
+  }
+  .editItem form input,
+  select,
+  textarea {
+    min-width: 250px;
   }
 }
 
@@ -449,7 +458,7 @@ textarea {
     height: 230px;
   }
 
-  .items .container h3 {
+  .items .container .items h3 {
     font-size: 0.8rem;
   }
 }

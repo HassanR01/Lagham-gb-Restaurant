@@ -104,8 +104,8 @@ export default function EditItem({ item }) {
                 </div>
                 <div className="submit flex-col">
                     <h5 className=' text-red-400 font-medium text-lg my-2'>{alert}</h5>
-                    <div className="btns flex">
-                        <button type="submit" className='btn w-32 mx-4'>Edit</button>
+                    <div className="btns flex items-center justify-center w-full">
+                        <button type="submit" className='btn w-32 mr-4'>Edit</button>
                         <div onClick={() => DeleteItem(item._id)} className='linkRed cursor-pointer'>Delete</div>
                     </div>
                 </div>
