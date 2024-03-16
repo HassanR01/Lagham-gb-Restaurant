@@ -66,7 +66,7 @@ export default function AddToCart({ itemInfo }) {
         <div className='btn cursor-pointer' onClick={() => inc()}>+</div>
       </div>
       <h4 className='text-green-400 font-bold text-2xl text-center'>{itemInfo.price * quantity} EGP</h4>
-      <h3 className='text-red-400 font-bold text-right'>{alert}</h3>
+      <h5 className='text-red-400 font-bold text-right'>{alert}</h5>
       <button className='btn w-full mt-4' type="submit">Add To Cart</button>
     </form>
 
