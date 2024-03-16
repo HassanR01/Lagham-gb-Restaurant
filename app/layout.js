@@ -1,7 +1,7 @@
 import Footer from "./components/main/footer";
 import Header from "./components/main/header";
 import { NextAuthProvider } from './Providers'
-
+import { Analytics } from '@vercel/analytics/react';
 import "./globals.css";
 import Script from "next/script";
 
@@ -20,6 +20,7 @@ export default function RootLayout({ children }) {
           <Footer />
         </NextAuthProvider>
         <Script src="Js/main.js" />
+        <Analytics />
       </body>
     </html>
   );
