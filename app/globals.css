@@ -164,6 +164,7 @@ input[type="radio"]:checked + .sizeChoice {
   -ms-transform: translate(0, -50%);
   -o-transform: translate(0, -50%);
 }
+
 .outBox.active {
   background-color: #00ff22;
 }
