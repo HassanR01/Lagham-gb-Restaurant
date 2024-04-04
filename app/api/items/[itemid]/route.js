@@ -11,9 +11,9 @@ export async function GET(req, { params }) {
 
 export async function PUT(req, { params }) {
     const {itemid} = params
-    const { newtitleEn: titleEn, newtitleAr: titleAr, newcategory: category, newimage: image, newprice: price, newdescription: description, newpoints: points, newsize: size, newrate: rate } = await req.json()
+    const { newtitleEn: titleEn, newtitleAr: titleAr, newcategory: category, newimage: image, newprice: price, newdescription: description, newpoints: points, newsize: size, newrate: rate, newshowExtras: showExtras } = await req.json()
     await connectMongoDB()
-    await Item.findByIdAndUpdate(itemid, { titleEn, titleAr, category, image, price, description, points, size, rate })
+    await Item.findByIdAndUpdate(itemid, { titleEn, titleAr, category, image, price, description, points, size, rate, showExtras })
     return NextResponse.json({message: "Item Updated" } , {status: 200})
 }
 

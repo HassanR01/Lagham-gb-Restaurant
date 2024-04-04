@@ -187,6 +187,9 @@ form h5 {
   color: white;
 }
 
+.extrasCon {
+}
+
 .partitions {
   width: 100%;
 }
@@ -386,12 +389,13 @@ textarea {
     width: 100%;
   }
   .items .container .items .item:hover .editItem {
-    height: 650px;
+    height: 680px;
   }
   .editItem form input,
   select,
   textarea {
     min-width: 250px;
+    width: 100%;
   }
 }
 

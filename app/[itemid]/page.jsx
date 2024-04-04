@@ -20,6 +20,22 @@ const getItem = async (id) => {
   }
 }
 
+const getItems = async () => {
+  const apiUrl = process.env.API_URL;
+  try {
+    const res = await fetch(`${apiUrl}/api/items`, {
+      cache: 'no-store'
+    })
+    if (!res.ok) {
+      throw new Error('Cannot Fetch The Items')
+    }
+
+    return res.json()
+  } catch (err) {
+    console.log(err);
+  }
+}
+
 export async function generateMetadata({ params }) {
   const { itemid } = params
   const { item } = await getItem(itemid)
@@ -44,6 +60,15 @@ export default async function Item({ params }) {
   const { itemid } = params
   const { item } = await getItem(itemid)
   const { titleEn, titleAr, category, image, price, description, points, rate } = item
+  const { items } = await getItems()
+
+  const Extras = items.filter(item => {
+    const extras = item.category === 'extras'
+
+    return extras
+  })
+
+  console.log(Extras);
 
   return (
     <section>
@@ -51,7 +76,7 @@ export default async function Item({ params }) {
         <div className="image">
           <Image className='rounded-xl' src={image} width={400} height={400} alt={titleAr} />
         </div>
-        <div className="info flex flex-col justify-between mx-4">
+        <div className="info flex flex-col justify-between">
           <div className="main mb-12 relative">
             <div className="title text-2xl font-bold">
               <h2 className='text-left'>{titleEn}</h2>
@@ -64,7 +89,7 @@ export default async function Item({ params }) {
               <p className=' text-xl'>{description}</p>
             </div>
           </div>
-          <AddToCart itemInfo={item} />
+          <AddToCart itemInfo={item} ExtrasItems={Extras} />
         </div>
       </div>
       <a href="/" className='link'>Menu</a>

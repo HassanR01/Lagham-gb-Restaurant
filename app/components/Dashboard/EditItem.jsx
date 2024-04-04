@@ -2,7 +2,7 @@
 import React, { useState } from 'react'
 
 export default function EditItem({ item }) {
-    const { titleEn, titleAr, category, image, price, description, points, size } = item
+    const { titleEn, titleAr, category, image, price, description, points, size, showExtras } = item
     const [newtitleEn, setNewtitleEn] = useState(titleEn)
     const [newtitleAr, setNewtitleAr] = useState(titleAr)
     const [newcategory, setNewcategory] = useState(category)
@@ -12,6 +12,7 @@ export default function EditItem({ item }) {
     const [newpoints, setNewpoints] = useState(points)
     const [newsize, setNewsize] = useState(size)
     const [activation, setActivation] = useState(`${newsize === 'true' ? 'active' : ''}`)
+    const [newshowExtras, setNewShowExtars] = useState(showExtras)
     const [alert, setAlert] = useState()
 
     const handelSizeChecker = () => {
@@ -34,7 +35,7 @@ export default function EditItem({ item }) {
                     headers: {
                         'Content-type': 'application/json'
                     },
-                    body: JSON.stringify({ newtitleAr, newtitleEn, newcategory, newimage, newprice, newdescription, newpoints, newsize })
+                    body: JSON.stringify({ newtitleAr, newtitleEn, newcategory, newimage, newprice, newdescription, newpoints, newsize, newshowExtras })
                 })
 
                 if (res.ok) {
@@ -71,6 +72,13 @@ export default function EditItem({ item }) {
             }
         }
     }
+    const handleShowExtras = () => {
+        if (newshowExtras === '') {
+            setNewShowExtars('active')
+        } else {
+            setNewShowExtars('')
+        }
+    }
 
     return (
         <>
@@ -97,6 +105,13 @@ export default function EditItem({ item }) {
                     <p className='ml-1'>{activation === 'active' ? (<>Yes</>) : (<>No</>)}</p>
                     <div className={`outBox ${activation}`} onClick={() => handelSizeChecker()}>
                         <div className={`inBox ${activation}`}></div>
+                    </div>
+                </div>
+                <div className="showExtras">
+                    <h4 className='text-lg font-medium'>Show Extras in This Item ?</h4>
+                    <p className='ml-1'>{newshowExtras === 'active' ? (<>Yes</>) : (<>No</>)}</p>
+                    <div className={`outBox ${newshowExtras}`} onClick={() => handleShowExtras()}>
+                        <div className={`inBox ${newshowExtras}`}></div>
                     </div>
                 </div>
                 <div className="description">

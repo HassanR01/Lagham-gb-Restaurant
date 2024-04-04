@@ -48,17 +48,29 @@ export default async function OrderList() {
                             <h3 className='text-center text-xl font-semibold'>Items</h3>
                             <div className="items">
                                 {order.items.map((item, ind) => (
-                                    <div className="item flex justify-around items-center my-4" key={ind}>
-                                        <div className="quantity flex items-center justify-center">
-                                            <Image className='rounded-xl mr-2 w-10 h-10' src={item.itemInfo.image} width={80} height={80} alt={item.itemInfo.titleAr} />
-                                            <h3 className='text-xl font-bold'>{item.quantity} {item.itemInfo.titleEn}</h3>
+                                    <div className="item flex justify-around items-center flex-col my-4" key={ind}>
+                                        <div className="items w-full flex justify-between items-center">
+
+                                            <div className="quantity flex items-center justify-center">
+                                                <Image className='rounded-xl mr-2 w-10 h-10' src={item.itemInfo.image} width={80} height={80} alt={item.itemInfo.titleAr} />
+                                                <h3 className='text-xl font-bold'>{item.quantity} {item.itemInfo.titleEn}</h3>
+                                            </div>
+                                            <div className="price">
+                                                <h3 className='text-xl text-green-300 font-medium'>{item.quantity * item.itemInfo.price - (item.quantity * item.itemInfo.price * 0.1)} EGP</h3>
+                                            </div>
+                                            <div className="size">
+                                                <h3>Size:</h3>
+                                                <h3 className='text-xl font-semibold'>{item.size}</h3>
+                                            </div>
                                         </div>
-                                        <div className="price">
-                                            <h3 className='text-xl text-green-300 font-medium'>{item.quantity * item.itemInfo.price - (item.quantity * item.itemInfo.price * 0.1)} EGP</h3>
-                                        </div>
-                                        <div className="size">
-                                            <h3>Size:</h3>
-                                            <h3 className='text-xl font-semibold'>{item.size}</h3>
+                                        <div className="itemExtras flex w-full justify-start items-center overflow-auto">
+                                            {item.extras?.length > 0 && item.extras.map(extraItem => (
+                                                <div key={extraItem._id} className="item flex items-center justify-center flex-col">
+                                                    <Image src={extraItem.image} width={50} height={50} alt='item' />
+                                                    <h3>{extraItem.titleAr}</h3>
+                                                    <h3 className='text-green-300 font-medium'>{extraItem.price} EGP</h3>
+                                                </div>
+                                            ))}
                                         </div>
                                     </div>
                                 ))}

@@ -28,7 +28,7 @@ export default function Basket() {
 
   let totalPrice = 0
   cart.forEach(item => {
-    totalPrice = totalPrice + (item.itemInfo.price * item.quantity)
+    totalPrice = totalPrice + (item.totalPrice)
   })
 
   if (checkUsingPoints === 'active') {
@@ -47,7 +47,8 @@ export default function Basket() {
     email: session?.user?.email,
     image: session?.user?.image,
     items: [...cart],
-    totalPrice: totalPrice - (totalPrice * 0.1),
+    totalPrice: totalPrice,
+    // - (totalPrice * 0.1)
     phoneNum: phone,
     address: location,
     paymentMethod: paymentMethod
@@ -136,7 +137,7 @@ export default function Basket() {
     }
 
   }
- 
+
   const handelSendOrderForm = async (e) => {
     e.preventDefault()
     setAlert('يتم مراجعة البيانات')
@@ -217,10 +218,11 @@ export default function Basket() {
                       </div>
                     </div>
                     <div className="quantity flex flex-row items-center justify-center">
-                      <h3 className='font-medium text-xl mx-4'>{item.quantity}</h3>
+                      <h3 className='font-medium text-xs lg:text-xl mx-4'>{item.quantity}</h3>
+                      <h3 className='font-medium text-xs lg:text-xl mx-4'>{item.extras.length} Extra</h3>
                     </div>
                     <div className="price flex items-center justify-center">
-                      <h3 className='mr-10 text-2xl font-bold text-green-300'>{item.itemInfo.price * item.quantity} EGP</h3>
+                      <h3 className='mr-10 text-2xl font-bold text-green-300'>{item.totalPrice} EGP</h3>
                       <svg onClick={() => removeItem(index)} fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 sm:mr-4 text-red-400 cursor-pointer"><path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" /></svg>
                     </div>
                   </div>
@@ -253,7 +255,7 @@ export default function Basket() {
             )}
             <div className="line"></div>
             <h2 className='text-xl font-medium flex items-center justify-between'><span className='text-gray-400 text-lg'>Subtotal</span> <span>{totalPrice} EGP</span></h2>
-            <h2 className='text-xl font-medium flex items-center justify-between text-red-400'><span className='text-gray-400 text-lg'>Discount</span> <span>-10%</span></h2>
+            {/* <h2 className='text-xl font-medium flex items-center justify-between text-red-400'><span className='text-gray-400 text-lg'>Discount</span> <span>-10%</span></h2> */}
             <h2 className='text-xl font-semibold flex items-center justify-between text-green-300 my-2'><span className='text-gray-50 text-xl'>Total Price</span> <span>{totalPrice - (totalPrice * 0.1)} EGP</span></h2>
           </div>
           <div className="line"></div>
@@ -270,8 +272,6 @@ export default function Basket() {
               <div className="pay my-4 flex justify-center items-center">
                 <input className='hidden' type="radio" name="pay" id="cod" value={'cash on delivery'} onChange={(e) => setPaymentMethod(e.target.value)} />
                 <label className='sizeChoice px-3 mr-2' htmlFor="cod">Cash On Delivery</label>
-                <input className='hidden' type="radio" name="pay" id="pol" value={'pay online'} onChange={(e) => setPaymentMethod(e.target.value)} />
-                <label className='sizeChoice px-3' htmlFor="pol">Pay Online</label>
               </div>
               <h5 className='font-bold text-lg text-red-400 mb-4'>{alert}</h5>
               {status === "authenticated" ? (<button className='btn w-4/5' type='submit'>{subBtn}</button>) : (<div onClick={() => signIn('google')} className='btn w-4/5'>Sign In To Order</div>)}
@@ -280,7 +280,7 @@ export default function Basket() {
             <div className="order w-full flex justify-center items-center mt-4">
               <form className='w-full flex flex-col items-center justify-center' onChange={() => setAlert('')} onSubmit={handelSendOrderForm} >
                 <input type="tel" name="phone" placeholder='Your Phone Number' value={phone} onChange={(e) => setPhone(e.target.value)} />
-                <h5 className='font-bold text-lg text-red-400'>{alert}</h5>
+                <h5 className='font-bold text-lg text-red-400 text-center'>{alert}</h5>
                 {status === "authenticated" ? (<button className='btn w-4/5 mt-4' type='submit'>{subBtn}</button>) : (<div onClick={() => signIn('google')} className='btn w-4/5'>Sign In To Order</div>)}
               </form>
             </div>

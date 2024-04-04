@@ -11,17 +11,24 @@ export default function AddItem() {
     const [points, setPoints] = useState()
     const [size, setSize] = useState("false")
     const [activation, setActivation] = useState("")
+    const [showExtras, setShowExtars] = useState('')
     const [alert, setAlert] = useState()
 
     const handelSizeChecker = () => {
         if (size === "true") {
             setSize("false")
             setActivation('')
-            setPrice(price)
         } else {
             setSize("true")
             setActivation('active')
-            setPrice(price)
+        }
+    }
+
+    const handleShowExtras = () => {
+        if (showExtras === '') {
+            setShowExtars('active')
+        } else {
+            setShowExtars('')
         }
     }
 
@@ -36,7 +43,7 @@ export default function AddItem() {
                     headers: {
                         "Content-type": 'applicaiton/json'
                     },
-                    body: JSON.stringify({ titleEn, titleAr, category, image, price, size, description, points })
+                    body: JSON.stringify({ titleEn, titleAr, category, image, price, size, description, points, showExtras })
                 })
 
                 if (res.ok) {
@@ -65,7 +72,7 @@ export default function AddItem() {
                 </div>
                 <div className="details">
                     <select placeholder='Item Category' name="category" value={category} onChange={(e) => setCategory(e.target.value)}>
-                        <option value=""></option>
+                        <option value="">Category</option>
                         <option value="smash_burger">Smash Burger</option>
                         <option value="extras">Extras</option>
                         <option value="meals">Meals</option>
@@ -82,6 +89,13 @@ export default function AddItem() {
                     <p className='ml-1'>{size === 'true' ? (<>Yes</>) : (<>No</>)}</p>
                     <div className={`outBox ${activation}`} onClick={() => handelSizeChecker()}>
                         <div className={`inBox ${activation}`}></div>
+                    </div>
+                </div>
+                <div className="showExtras">
+                    <h4 className='text-lg font-medium'>Show Extras With This Item ?</h4>
+                    <p className='ml-1'>{showExtras === 'active' ? (<>Yes</>) : (<>No</>)}</p>
+                    <div className={`outBox ${showExtras}`} onClick={() => handleShowExtras()}>
+                        <div className={`inBox ${showExtras}`}></div>
                     </div>
                 </div>
                 <div className="description">
