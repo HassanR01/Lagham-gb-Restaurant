@@ -86,7 +86,7 @@ export default async function Item({ params }) {
               <h4>{price} EGP</h4>
             </div>
             <div className="description">
-              <p className=' text-xl'>{description}</p>
+              <p className='text-right text-xl'>{description}</p>
             </div>
           </div>
           <AddToCart itemInfo={item} ExtrasItems={Extras} />
