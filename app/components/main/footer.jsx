@@ -9,7 +9,7 @@ export default function Footer() {
     return (
         <>
             <footer className='flex flex-wrap justify-around items-center w-full p-2 bg-gray-200 text-bgColor'>
-                <p className='text-sm mb-1'>Copyright<sup>&copy;</sup>{year} <Link href={'https://rockaidev.vercel.app'} className='font-bold text-blue-500'>Rockai Dev</Link> | All Rights Reserved.</p>
+                <p className='text-sm mb-1'>Copyright<sup>&copy;</sup>{year} <Link href={'https://www.rockaidev.com'} className='font-bold text-blue-500'>Rockai Dev</Link> | All Rights Reserved.</p>
                 <p className='text-sm'><Link className='px-2 font-semibold' href="/">Teams {`&`} conditions</Link> <Link className='px-2 font-semibold' href="/">Privacy Policy</Link></p>
             </footer>
         </>
