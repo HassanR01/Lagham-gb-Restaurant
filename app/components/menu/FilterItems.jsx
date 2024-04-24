@@ -15,7 +15,7 @@ export default function FilterItems({ items, ctg }) {
     return (
         <>
             {FilterdItems.map(item => (
-                <div className={`card item show ${item.category}`} key={item._id}>
+                <Link href={`/${item._id}`} className={`card item show ${item.category}`} key={item._id}>
                     <div className="image">
                         <Image src={item.image} height={300} width={300} alt={'name'} />
                     </div>
@@ -23,13 +23,13 @@ export default function FilterItems({ items, ctg }) {
                         <h4>{item.titleEn}</h4>
                         <h4>{item.titleAr}</h4>
                         <div className="links flex items-center justify-center flex-wrap">
-                            <Link className='link' href={`/${item._id}`}>{item.price} L.E</Link>
+                            <div className='link' href={`/${item._id}`}>{item.price} L.E</div>
                         </div>
                     </div>
-                    <div className="points absolute top-1 left-1 py-1 px-2 bg-opacity-50 bg-bgColor rounded-full flex items-center justify-center text-yellow-500 font-semibold text-sm lg:text-xl">
+                    <div className="points absolute top-1 right-1 py-1 px-2 bg-opacity-50 bg-bgColor rounded-full flex items-center justify-center text-yellow-500 font-semibold text-sm lg:text-xl">
                         <h4>{item.points} Point</h4>
                     </div>
-                </div>
+                </Link>
             ))}
         </>
     )
