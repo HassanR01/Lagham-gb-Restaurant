@@ -41,7 +41,10 @@ export default function Header() {
             <div className="image absolute -bottom-32 left-2/4 -translate-x-1/2 flex flex-col items-center justify-center text-center w-full">
                 <Image src={logo} width={120} height={120} alt='Lagham logo' className='bg-gray-950 rounded-full border-gray-50 border-4 mb-3' />
                 <h4 className='title text-textColor text-2xl mb-2 font-bold '>Warta Restaurant</h4>
-                <h6 className='text text-sm text-gray-400 font-semibold'>Semoha, Elshahed Eltaiar - B/R2 | 0155-626-6697</h6>
+                <div className='text text-sm text-gray-400 font-semibold flex flex-row items-center justify-center'>
+                    <Link href={''} className='mx-1 underline'>Location on Google Map</Link>|
+                    <Link href={'tel:01556266697'} className='mx-1 underline'>0155-626-6697</Link>
+                </div>
             </div>
         </header>
     )
