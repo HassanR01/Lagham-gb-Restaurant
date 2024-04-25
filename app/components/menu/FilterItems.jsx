@@ -26,7 +26,7 @@ export default function FilterItems({ items, ctg }) {
                             <div className='link' href={`/${item._id}`}>{item.price} L.E</div>
                         </div>
                     </div>
-                    <div className="points absolute top-1 right-1 py-1 px-2 bg-opacity-50 bg-bgColor rounded-full flex items-center justify-center text-yellow-500 font-semibold text-sm lg:text-xl">
+                    <div className="points absolute top-2 right-2 py-0.5 px-2 bg-opacity-50 bg-bgColor rounded-full flex items-center justify-center text-yellow-500 font-semibold text-sm lg:text-xl">
                         <h4>{item.points} Point</h4>
                     </div>
                 </Link>
