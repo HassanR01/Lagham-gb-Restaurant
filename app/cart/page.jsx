@@ -47,8 +47,7 @@ export default function Basket() {
     email: session?.user?.email,
     image: session?.user?.image,
     items: [...cart],
-    totalPrice: totalPrice,
-    // - (totalPrice * 0.1)
+    totalPrice: totalPrice - (totalPrice * 0.1),
     phoneNum: phone,
     address: location,
     paymentMethod: paymentMethod
@@ -255,7 +254,7 @@ export default function Basket() {
             )}
             <div className="line"></div>
             <h2 className='text-xl font-medium flex items-center justify-between'><span className='text-gray-400 text-lg'>Subtotal</span> <span>{totalPrice} EGP</span></h2>
-            {/* <h2 className='text-xl font-medium flex items-center justify-between text-red-400'><span className='text-gray-400 text-lg'>Discount</span> <span>-10%</span></h2> */}
+            <h2 className='text-xl font-medium flex items-center justify-between text-red-400'><span className='text-gray-400 text-lg'>Discount</span> <span>-10%</span></h2>
             <h2 className='text-xl font-semibold flex items-center justify-between text-green-300 my-2'><span className='text-gray-50 text-xl'>Total Price</span> <span>{totalPrice - (totalPrice * 0.1)} EGP</span></h2>
           </div>
           <div className="line"></div>
