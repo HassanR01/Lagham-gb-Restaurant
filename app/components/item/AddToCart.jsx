@@ -76,10 +76,10 @@ export default function AddToCart({ itemInfo, ExtrasItems }) {
         <>
           <h2 className='text-xl font-medium'>Choose Size:</h2>
           <div className="size flex items-center justify-center my-4">
-            <input className="hidden" type="radio" name="size" id="small" value={'small'} onChange={(e) => setSize(e.target.value)} />
-            <label className='sizeChoice px-10 rounded-l-xl' htmlFor="small">Small</label>
-            <input className='hidden' type="radio" name="size" id="large" value={'large'} onChange={(e) => setSize(e.target.value)} />
-            <label className='sizeChoice px-10 rounded-r-xl' htmlFor="large">Large</label>
+            <input className="hidden" type="radio" name="size" id="small" value={'Single'} onChange={(e) => setSize(e.target.value)} />
+            <label className='sizeChoice px-10 rounded-l-xl' htmlFor="small">Single</label>
+            <input className='hidden' type="radio" name="size" id="large" value={'Double'} onChange={(e) => setSize(e.target.value)} />
+            <label className='sizeChoice px-10 rounded-r-xl' htmlFor="large">Double</label>
           </div>
         </>
       ) : null}
