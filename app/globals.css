@@ -17,11 +17,11 @@ body {
 }
 
 .linkRed {
-  @apply w-40 rounded-xl bg-red-500 flex items-start justify-center p-1 text-xl font-semibold text-gray-950;
+  @apply w-32 sm:w-40 rounded-xl bg-red-500 flex items-start justify-center p-1 sm:text-xl font-semibold text-gray-950;
 }
 
 .btn {
-  @apply rounded-xl bg-gray-50 flex items-start justify-center px-4 py-1 text-xl font-semibold text-gray-950 cursor-pointer;
+  @apply rounded-xl bg-gray-50 flex items-start justify-center px-4 py-1 sm:text-xl font-semibold text-gray-950 cursor-pointer;
 }
 
 header {
@@ -272,8 +272,6 @@ textarea {
 }
 
 .users .users .user {
-  width: calc(90% / 3);
-  min-width: 300px;
   height: 230px;
   margin: 10px;
 }

@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import React from 'react'
 import TotalPrice from './totalPrice'
+import ZeroPoints from '../buttons/ZeroPoints'
 
 const UserList = async () => {
     const apiUrl = process.env.API_URL
@@ -25,7 +26,7 @@ export default async function UsersList() {
         <>
             <div className="users p-2 flex w-full flex-wrap justify-center items-center">
                 {users.length > 0 && users.map(user => (
-                    <div className="user flex flex-col justify-between items-center bg-textColor text-bgColor rounded-xl overflow-hidden" key={user._id}>
+                    <div className="user w-80 sm:w-96 flex flex-col justify-between items-center bg-textColor text-bgColor rounded-xl overflow-hidden" key={user._id}>
                         <div className="data w-full flex justify-between items-center bg-gray-300">
                             <div className="image">
                                 <Image src={user.image} width={100} height={100} alt='user Image' />
@@ -39,7 +40,10 @@ export default async function UsersList() {
                             </div>
                         </div>
                         <div className="activities w-full p-2">
-                            <h3 className='text-xl font-semibold my-2'>Points: {user.points} point</h3>
+                            <div className="points w-full flex justify-between items-center">
+                                <h3 className='text-xl font-semibold my-'>Points: {user.points} point</h3>
+                                <ZeroPoints email={user.email} />
+                            </div>
                             <h3 className='text-xl font-semibold my-2'>Orders: {user.orders.length} orders</h3>
                             <h3 className='text-xl font-semibold my-2'>Paid: <TotalPrice user={user} /></h3>
                         </div>

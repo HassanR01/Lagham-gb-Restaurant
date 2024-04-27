@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import React from 'react'
+import ChangeOrderStatus from '../buttons/ChangeOrderStatus'
 
 const orderList = async () => {
     const apiUrl = process.env.API_URL
@@ -24,7 +25,7 @@ export default async function OrderList() {
         <>
             <div className="orders w-full p-4 flex justify-center items-center flex-col-reverse sm:p-8">
                 {orders.length > 0 && orders.map(order => (
-                    <div className="order w-full p-2 border border-gray-400 rounded-xl my-4" key={order._id}>
+                    <div className={`order w-full p-2 border ${order.status === 'Done' ? 'border-green-400' : order.status === 'fail' ? 'border-red-400' : 'border-gray-400'} rounded-xl my-4`} key={order._id}>
                         <div className="titles  flex flex-row items-center justify-between">
 
                             <div className="user">
@@ -44,7 +45,10 @@ export default async function OrderList() {
                                 <h3 className='text-xl'>{order.createdAt.slice(0, 10)} {order.createdAt.slice(12, 16)}</h3>
                             </div>
                         </div>
-                        <div className="itemsList p-4 relative">
+                        <div className="location">
+                            <h3>Location: {order.address}</h3>
+                        </div>
+                        <div className="itemsList p-4 pb-32 lg:pb-14  relative">
                             <h3 className='text-center text-xl font-semibold'>Items</h3>
                             <div className="items">
                                 {order.items.map((item, ind) => (
@@ -75,8 +79,8 @@ export default async function OrderList() {
                                     </div>
                                 ))}
                             </div>
-                            <div className="location absolute left-3 bottom-0">
-                                <h3>Location: {order.address}</h3>
+                            <div className="location w-full flex flex-wrap items-center justify-center p-2 absolute left-0 bottom-0">
+                                <ChangeOrderStatus id={order._id} oldstatus={order.status} />
                             </div>
                         </div>
                     </div>
