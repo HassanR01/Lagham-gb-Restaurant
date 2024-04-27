@@ -5,9 +5,9 @@ import { NextResponse } from "next/server"
 
 export async function PUT(req, { params }) {
     const { userEmail } = params
-    const { points, orders } = await req.json()
+    const { points, orders, phone } = await req.json()
     await connectMongoDB()
-    await User.findOneAndUpdate({ email: userEmail }, { $addToSet: { orders }, points })
+    await User.findOneAndUpdate({ email: userEmail }, { $addToSet: { orders }, points, phone })
     return NextResponse.json({message: 'User Updated'} , {status: 200})
 }
 

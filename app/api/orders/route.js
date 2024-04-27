@@ -3,9 +3,9 @@ import Order from "@/models/orders"
 import { NextResponse } from "next/server"
 
 export async function POST(req) {
-    const { name, email, image, items, totalPrice, phoneNum, address, paymentMethod } = await req.json()
+    const { name, email, image, items, totalPrice, phoneNum, address, paymentMethod , status } = await req.json()
     await connectMongoDB()
-    const order = await Order.create({ name, email, image, items, totalPrice, phoneNum, address, paymentMethod })
+    const order = await Order.create({ name, email, image, items, totalPrice, phoneNum, address, paymentMethod, status })
     return NextResponse.json({ message : 'Order Sent' } , {status: 201})
 }
 

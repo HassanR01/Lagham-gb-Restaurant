@@ -11,6 +11,7 @@ const orderSchema = new Schema({
         default: 'In The Branch'
     },
     paymentMethod: String,
+    status: String,
 }, {timestamps: true})
 
 const Order = mongoose.models.Order || mongoose.model('Order', orderSchema)

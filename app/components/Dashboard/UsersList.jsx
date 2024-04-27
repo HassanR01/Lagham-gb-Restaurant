@@ -28,7 +28,7 @@ export default async function UsersList() {
                     <div className="user flex flex-col justify-between items-center bg-textColor text-bgColor rounded-xl overflow-hidden" key={user._id}>
                         <div className="data w-full flex justify-between items-center bg-gray-300">
                             <div className="image">
-                                <Image src={user.image} width={150} height={150} alt='user Image' />
+                                <Image src={user.image} width={100} height={100} alt='user Image' />
                             </div>
                             <div className="title p-2">
                                 <h3 className='text-xl font-semibold'>{user.name}</h3>

@@ -4,6 +4,7 @@ const userSchema = new Schema({
     name: String,
     email: String,
     image: String,
+    phone: String,
     points: {
         type: Number,
         default: 0,

@@ -99,7 +99,7 @@ export default function Basket() {
             headers: {
               "Content-type": "application/json"
             },
-            body: JSON.stringify({ orders, points })
+            body: JSON.stringify({ orders, points , phone })
           })
 
           const resO = await fetch('api/orders', {
