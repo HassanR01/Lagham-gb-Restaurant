@@ -145,6 +145,19 @@ input[type="radio"]:checked + .sizeChoice {
   margin-top: 30px;
 }
 
+.DeleveryForm {
+  direction: rtl;
+}
+
+.DeleveryForm select,
+.DeleveryForm input {
+  width: 100%;
+  margin: 2px;
+}
+
+.DeleveryForm .location .apartment input {
+  width: 45%;
+}
 .checkout input {
   @apply bg-bgColor w-full text-textColor font-mainFont p-1 rounded-lg border-none outline-none mx-1 my-2;
   border-bottom: 2px solid white;
@@ -344,7 +357,7 @@ textarea {
   #Menu .menuList .items .card .text h4 {
     font-size: 1rem;
   }
-  
+
   #Menu .menuList .items .card .text .link {
     padding: 2px;
     margin-bottom: 5px;

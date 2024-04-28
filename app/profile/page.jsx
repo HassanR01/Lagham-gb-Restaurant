@@ -31,6 +31,8 @@ export default async function Profile({ searchParams }) {
   const { user } = await getUser(email)
   const { orders } = user
 
+  let Admins = ['m.3ezzat3295@gmail.com', 'mohamedkhalil.h9@gmail.com', 'hassanrageh.236@gmail.com']
+
   return (
     <section id='profile'>
       <div className="userInfo flex flex-col sm:flex-row w-full justify-around items-center pb-4">
@@ -84,7 +86,7 @@ export default async function Profile({ searchParams }) {
         </div>
       </div>
       <div className="adminDashboard py-3">
-        {user.email === 'hassanrageh.236@gmail.com' && (<Link href={{
+        {Admins.includes(user.email) && (<Link href={{
           pathname: '/Dashboard',
           query: {
             email: user.email
