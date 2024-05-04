@@ -153,6 +153,8 @@ input[type="radio"]:checked + .sizeChoice {
 .DeleveryForm input {
   width: 100%;
   margin: 2px;
+  max-width: none;
+  min-width: none;
 }
 
 .DeleveryForm .location .apartment input {

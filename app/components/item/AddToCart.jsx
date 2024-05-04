@@ -15,7 +15,7 @@ export default function AddToCart({ itemInfo, ExtrasItems }) {
   extras.forEach(extra => {
     totalExtrasPrice = totalExtrasPrice + extra.price
   })
-  let totalPrice = totalExtrasPrice + (itemInfo.price * quantity) + (size === 'large' ? 50 * quantity : 0)
+  let totalPrice = totalExtrasPrice + (itemInfo.price * quantity) + (size === 'Double' ? 50 * quantity : 0)
   const item = { itemInfo, quantity, size, extras, totalPrice }
 
   console.log(itemInfo);

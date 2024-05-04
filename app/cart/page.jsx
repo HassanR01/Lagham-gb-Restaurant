@@ -43,17 +43,17 @@ export default function Basket() {
 
   let itemsPoints = 0
   cart.forEach(item => {
-    itemsPoints = itemsPoints + (item.itemInfo.points * item.quantity)
+    itemsPoints += (+item.itemInfo.points * +item.quantity)
   })
 
-  let points = point + totalPrice
+  let points = +point + +totalPrice
 
   const orders = {
     name: session?.user?.name,
     email: session?.user?.email,
     image: session?.user?.image,
     items: [...cart],
-    totalPrice: (totalPrice - (totalPrice * 0.1)) + (checkBranch === 'active' ? 0 : 35),
+    totalPrice: Math.floor((totalPrice - (totalPrice * 0.1)) + (checkBranch === 'active' ? 0 : 35)),
     phoneNum: phone,
     address: location,
     paymentMethod: paymentMethod
@@ -260,7 +260,7 @@ export default function Basket() {
             <h2 className='text-xl font-medium flex items-center justify-between'><span className='text-gray-400 text-lg'>Subtotal</span> <span>{totalPrice} EGP</span></h2>
             <h2 className='text-lg font-medium flex items-center justify-between text-red-400'><span className='text-gray-400 text-lg'>Discount</span> <span>-10%</span></h2>
             {checkBranch === '' && (<h2 className='text-lg font-medium flex items-center justify-between text-green-300'><span className='text-gray-400 text-lg'>Delivery</span> <span>35 EGP</span></h2>)}
-            <h2 className='text-xl font-semibold flex items-center justify-between text-green-300 my-2'><span className='text-gray-50 text-xl'>Total Price</span> <span>{(totalPrice - (totalPrice * 0.1)) + (checkBranch === 'active' ? 0 : 35)} EGP</span></h2>
+            <h2 className='text-xl font-semibold flex items-center justify-between text-green-300 my-2'><span className='text-gray-50 text-xl'>Total Price</span> <span>{Math.floor((totalPrice - (totalPrice * 0.1)) + (checkBranch === 'active' ? 0 : 35))} EGP</span></h2>
           </div>
           <div className="line"></div>
           <div className="check flex w-full justify-between items-center">
@@ -286,6 +286,7 @@ export default function Basket() {
                   <option value="رشدي">رشدي</option>
                   <option value="سان ستيفانو">سان ستيفانو</option>
                 </select>
+                <p className='text-red-400 text-xs sm:text-sm mt-1 mr-1'>* سيتم فتح المناطق من محمد نجيب الي المندرة قريباً</p>
                 <input type="text" name="street name" placeholder='اسم الشارع' value={street} onChange={(e) => setStreet(e.target.value)} />
                 <input type="text" name="building" placeholder='اسم او رقم العمارة' onChange={(e) => setBuilding(e.target.value)} />
                 <div className="apartment flex items-center justify-between">

@@ -6,9 +6,6 @@ export default function ChangeOrderStatus({ id, oldstatus }) {
     const [status, setStatus] = useState(oldstatus)
     const router = useRouter()
 
-
-    console.log(status)
-
     const handleForm = async (e) => {
         e.preventDefault()
 
