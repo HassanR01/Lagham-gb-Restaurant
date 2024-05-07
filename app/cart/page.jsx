@@ -271,43 +271,54 @@ export default function Basket() {
           </div>
           {checkBranch === '' ? (
             <form className='DeleveryForm w-full flex flex-col items-center justify-center' onChange={() => setAlert('')} onSubmit={handelSendDOrderForm}>
-              <input type="tel" name="phone" placeholder='Your Phone Number' value={phone} onChange={(e) => setPhone(e.target.value)} />
-              <div className="location w-full">
-                <select name='zone' value={zone} onChange={(e) => setZone(e.target.value)}>
-                  <option value="">اختر المنطقة</option>
-                  <option value="سموحة">سموحة</option>
-                  <option value="كفر عبده">كفر عبده</option>
-                  <option value="سيدي جابر">سيدي جابر</option>
-                  <option value="الازاريطة">الازاريطة</option>
-                  <option value="محطة الرمل">محطة الرمل</option>
-                  <option value="محرم بك">محرم بك</option>
-                  <option value="جليم">جليم</option>
-                  <option value="مصطفي كامل">مصطفي كامل</option>
-                  <option value="رشدي">رشدي</option>
-                  <option value="سان ستيفانو">سان ستيفانو</option>
-                </select>
-                <p className='text-red-400 text-xs sm:text-sm mt-1 mr-1'>* سيتم فتح المناطق من محمد نجيب الي المندرة قريباً</p>
-                <input type="text" name="street name" placeholder='اسم الشارع' value={street} onChange={(e) => setStreet(e.target.value)} />
-                <input type="text" name="building" placeholder='اسم او رقم العمارة' onChange={(e) => setBuilding(e.target.value)} />
-                <div className="apartment flex items-center justify-between">
-                  <input type="text" name="floor" placeholder='الدور' value={floor} onChange={(e) => setFloor(e.target.value)} />
-                  <input type="text" name="numberOfTheApartment" placeholder='رقم الشقة' value={NumberOfApartment} onChange={(e) => setNumberOfApartment(e.target.value)} />
-                </div>
-              </div>
-              <div className="pay my-4 flex justify-center items-center">
-                <input className='hidden' type="radio" name="pay" id="cod" value={'cash on delivery'} onChange={(e) => setPaymentMethod(e.target.value)} />
-                <label className='sizeChoice px-3 mr-2' htmlFor="cod">Cash On Delivery</label>
-              </div>
-              <h5 className='font-bold text-lg text-center text-red-400 mb-4'>{alert}</h5>
-              {status === "authenticated" ? (<button className='btn w-4/5' type='submit'>{subBtn}</button>) : (<div onClick={() => signIn('google')} className='btn w-4/5'>Sign In To Order</div>)}
+              {status === "authenticated" ? (
+                <>
+                  <input type="tel" name="phone" placeholder='Your Phone Number' value={phone} onChange={(e) => setPhone(e.target.value)} />
+                  <div className="location w-full">
+                    <select name='zone' value={zone} onChange={(e) => setZone(e.target.value)}>
+                      <option value="">اختر المنطقة</option>
+                      <option value="سموحة">سموحة</option>
+                      <option value="كفر عبده">كفر عبده</option>
+                      <option value="سيدي جابر">سيدي جابر</option>
+                      <option value="الازاريطة">الازاريطة</option>
+                      <option value="محطة الرمل">محطة الرمل</option>
+                      <option value="محرم بك">محرم بك</option>
+                      <option value="جليم">جليم</option>
+                      <option value="مصطفي كامل">مصطفي كامل</option>
+                      <option value="رشدي">رشدي</option>
+                      <option value="سان ستيفانو">سان ستيفانو</option>
+                    </select>
+                    <p className='text-red-400 text-xs sm:text-sm mt-1 mr-1'>* سيتم فتح المناطق من محمد نجيب الي المندرة قريباً</p>
+                    <input type="text" name="street name" placeholder='اسم الشارع' value={street} onChange={(e) => setStreet(e.target.value)} />
+                    <input type="text" name="building" placeholder='اسم او رقم العمارة' onChange={(e) => setBuilding(e.target.value)} />
+                    <div className="apartment w-full flex items-center justify-between">
+                      <input type="text" name="floor" placeholder='الدور' value={floor} onChange={(e) => setFloor(e.target.value)} />
+                      <input type="text" name="numberOfTheApartment" placeholder='رقم الشقة' value={NumberOfApartment} onChange={(e) => setNumberOfApartment(e.target.value)} />
+                    </div>
+                  </div>
+                  <div className="pay my-4 flex justify-center items-center">
+                    <input className='hidden' type="radio" name="pay" id="cod" value={'cash on delivery'} onChange={(e) => setPaymentMethod(e.target.value)} />
+                    <label className='sizeChoice px-3 mr-2' htmlFor="cod">Cash On Delivery</label>
+                  </div>
+                  <h5 className='font-bold text-lg text-center text-red-400 mb-4'>{alert}</h5>
+
+                  <button className='btn w-4/5' type='submit'>{subBtn}</button>
+                </>
+              ) : (<div onClick={() => signIn('google')} className='btn mt-4 w-4/5'>Sign In To Order</div>)}
             </form>
           ) : (<>
             <div className="order w-full flex justify-center items-center mt-4">
-              <form className='w-full flex flex-col items-center justify-center' onChange={() => setAlert('')} onSubmit={handelSendOrderForm} >
-                <input type="tel" name="phone" placeholder='Your Phone Number' value={phone} onChange={(e) => setPhone(e.target.value)} />
-                <h5 className='font-bold text-lg text-red-400 text-center'>{alert}</h5>
-                {status === "authenticated" ? (<button className='btn w-4/5 mt-4' type='submit'>{subBtn}</button>) : (<div onClick={() => signIn('google')} className='btn w-4/5'>Sign In To Order</div>)}
-              </form>
+              {status === "authenticated" ? (
+                <>
+
+                  <form className='w-full flex flex-col items-center justify-center' onChange={() => setAlert('')} onSubmit={handelSendOrderForm} >
+                    <input type="tel" name="phone" placeholder='Your Phone Number' value={phone} onChange={(e) => setPhone(e.target.value)} />
+                    <h5 className='font-bold text-lg text-red-400 text-center'>{alert}</h5>
+
+                    <button className='btn w-4/5 mt-4' type='submit'>{subBtn}</button>
+                  </form>
+                </>
+              ) : (<div onClick={() => signIn('google')} className='btn w-4/5'>Sign In To Order</div>)}
             </div>
           </>)}
         </div>

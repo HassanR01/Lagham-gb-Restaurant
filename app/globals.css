@@ -152,16 +152,18 @@ input[type="radio"]:checked + .sizeChoice {
 .DeleveryForm select,
 .DeleveryForm input {
   width: 100%;
-  margin: 2px;
+  margin: 0px;
   max-width: none;
   min-width: none;
 }
 
-.DeleveryForm .location .apartment input {
+.DeleveryForm .location .apartment input,
+.DeleveryForm .location .apartment select {
   width: 45%;
 }
-.checkout input {
-  @apply bg-bgColor w-full text-textColor font-mainFont p-1 rounded-lg border-none outline-none mx-1 my-2;
+.checkout input,
+.checkout select {
+  @apply bg-bgColor w-full text-textColor font-mainFont p-1 rounded-lg border-none outline-none my-2;
   border-bottom: 2px solid white;
 }
 
@@ -277,8 +279,8 @@ textarea {
 }
 
 .editItem form input,
-select,
-textarea {
+ .editItem form select,
+.editItem form textarea {
   @apply bg-bgColor text-textColor font-mainFont p-1 rounded-lg border-none outline-none mx-2 my-2;
   width: calc(95% / 2);
   min-width: 300px;
@@ -295,6 +297,8 @@ textarea {
   width: 100px;
   min-width: 100px;
 }
+
+
 
 /* Mobile View Style For All Website */
 
