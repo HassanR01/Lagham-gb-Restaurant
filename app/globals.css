@@ -10,6 +10,7 @@
 
 body {
   min-height: 100vh;
+  direction: rtl
 }
 
 .link {
@@ -75,7 +76,7 @@ nav ul li::before {
 }
 
 .card {
-  @apply flex flex-col items-center justify-center text-center m-5 w-80 h-80 overflow-hidden relative;
+  @apply flex flex-col items-center justify-center text-center m-5 w-80 min-h-80 overflow-hidden relative;
   display: none;
 }
 .card.item.show {
@@ -110,7 +111,7 @@ nav ul li::before {
   margin: 0 0 10px 0;
 }
 
-.card .text h4:nth-child(2) {
+.card .text h4:nth-child(1) {
   text-align: right;
 }
 
@@ -143,10 +144,6 @@ input[type="radio"]:checked + .sizeChoice {
   width: calc(80% - 500px);
   min-width: 500px;
   margin-top: 30px;
-}
-
-.DeleveryForm {
-  direction: rtl;
 }
 
 .DeleveryForm select,
@@ -352,12 +349,12 @@ textarea {
 
   #Menu .menuList .items .card {
     width: 180px;
-    height: 180px;
+    min-height: 180px;
     margin: 10px;
   }
 
   #Menu .menuList .items .card .text {
-    padding: 5px;
+    padding: 10px 5px;
   }
 
   #Menu .menuList .items .card .text h4 {
@@ -452,8 +449,8 @@ textarea {
     font-size: 0.8rem;
   }
   #Menu .menuList .items .card {
-    width: 170px;
-    height: 170px;
+    width: 290px;
+    min-height: 290px;
   }
   .items .container {
     padding: 10px;
@@ -477,8 +474,19 @@ textarea {
 
 @media (max-width: 420px) {
   #Menu .menuList .items .card {
-    width: 230px;
-    height: 230px;
+    width: 270px;
+    min-height: 270px;
+  }
+
+  .items .container .items h3 {
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 380px) {
+  #Menu .menuList .items .card {
+    width: 250px;
+    min-height: 250px;
   }
 
   .items .container .items h3 {

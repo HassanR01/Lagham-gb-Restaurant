@@ -89,12 +89,12 @@ export default function EditItem({ item }) {
                 </div>
                 <div className="details">
                     <select placeholder='Item Category' name="category" value={newcategory} onChange={(e) => setNewcategory(e.target.value)}>
-                        <option value=""></option>
-                        <option value="smash_burger">Smash Burger</option>
-                        <option value="extras">Extras</option>
-                        <option value="meals">Meals</option>
-                        <option value="chichen_sandwiches">Chicken Sandwiches</option>
-                        <option value="fries">Fries</option>
+                        <option value="">Category</option>
+                        <option value="smash_burger">برجر</option>
+                        <option value="offer">عروض</option>
+                        <option value="meals">وجبات</option>
+                        <option value="fries">فرايز</option>
+                        <option value="extras">إضافات</option>
                     </select>
                     <input placeholder='Link Image In Cloudnary' type="text" name="image" value={newimage} onChange={(e) => setNewimage(e.target.value)} />
                     <input placeholder='Price' type="number" name="price" value={newprice} onChange={(e) => setNewprice(e.target.value)} />

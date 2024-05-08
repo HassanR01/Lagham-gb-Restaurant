@@ -13,7 +13,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="ar">
       <body className=" bg-bgColor font-mainFont flex flex-col justify-start items-center relative text-textColor">
         <NextAuthProvider>
           <Header />

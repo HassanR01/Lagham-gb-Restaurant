@@ -18,8 +18,6 @@ export default function AddToCart({ itemInfo, ExtrasItems }) {
   let totalPrice = totalExtrasPrice + (itemInfo.price * quantity) + (size === 'Double' ? 50 * quantity : 0)
   const item = { itemInfo, quantity, size, extras, totalPrice }
 
-  console.log(itemInfo);
-
   useEffect(() => {
     const CartItems = localStorage.getItem('CartItems')
     if (CartItems) {
@@ -74,18 +72,18 @@ export default function AddToCart({ itemInfo, ExtrasItems }) {
     <form onSubmit={handelAddToCartForm} onChange={() => setAlert('')} className='w-full'>
       {itemInfo.size === 'true' ? (
         <>
-          <h2 className='text-xl font-medium'>Choose Size:</h2>
+          <h2 className='text-xl font-medium'>اختار الحجم:</h2>
           <div className="size flex items-center justify-center my-4">
             <input className="hidden" type="radio" name="size" id="small" value={'Single'} onChange={(e) => setSize(e.target.value)} />
-            <label className='sizeChoice px-10 rounded-l-xl' htmlFor="small">Single</label>
+            <label className='sizeChoice px-10 rounded-r-xl' htmlFor="small">Single</label>
             <input className='hidden' type="radio" name="size" id="large" value={'Double'} onChange={(e) => setSize(e.target.value)} />
-            <label className='sizeChoice px-10 rounded-r-xl' htmlFor="large">Double</label>
+            <label className='sizeChoice px-10 rounded-l-xl' htmlFor="large">Double</label>
           </div>
         </>
       ) : null}
       {itemInfo.showExtras === 'active' ? (
         <>
-          <h2 className='text-xl font-medium'>Choose Extras:</h2>
+          <h2 className='text-xl font-medium'>اختار الإضافات:</h2>
           <div className='extrasCon w-full flex items-center justify-start overflow-auto'>
             {ExtrasItems.map(item => (
               <div key={item._id} onClick={() => AddToExtras(item)} className="extraItem flex items-center justify-center flex-col m-2">
@@ -97,7 +95,7 @@ export default function AddToCart({ itemInfo, ExtrasItems }) {
           </div>
           {extras.length > 0 && (
             <>
-              <h2 className='text-xl font-medium'>Added Extras: </h2>
+              <h2 className='text-xl font-medium'>الإضافات: </h2>
               <div className="extrasAdded w-full flex items-center justify-center p-2">
                 <div className="added w-full flex items-center justify-start overflow-auto">
                   {extras.map((extra, index) => (
@@ -118,9 +116,9 @@ export default function AddToCart({ itemInfo, ExtrasItems }) {
         <h3 className='mx-6 text-2xl'>{quantity}</h3>
         <div className='btn cursor-pointer' onClick={() => inc()}>+</div>
       </div>
-      <h4 className='text-green-400 font-bold text-2xl text-center'>{totalPrice} EGP</h4>
+      <h4 className='text-green-400 font-bold text-2xl text-center'>{totalPrice} ج.م</h4>
       <h5 className='text-red-400 font-bold text-right'>{alert}</h5>
-      <button className='btn w-full mt-4' type="submit">Add To Cart</button>
+      <button className='btn w-full mt-4' type="submit">إضافة للسلة</button>
     </form>
 
   )

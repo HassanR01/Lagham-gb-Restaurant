@@ -73,11 +73,11 @@ export default function AddItem() {
                 <div className="details">
                     <select placeholder='Item Category' name="category" value={category} onChange={(e) => setCategory(e.target.value)}>
                         <option value="">Category</option>
-                        <option value="smash_burger">Smash Burger</option>
-                        <option value="offer">Offer</option>
-                        <option value="meals">Meals</option>
-                        <option value="fries">Fries</option>
-                        <option value="extras">Extras</option>
+                        <option value="smash_burger">برجر</option>
+                        <option value="offer">عروض</option>
+                        <option value="meals">وجبات</option>
+                        <option value="fries">فرايز</option>
+                        <option value="extras">إضافات</option>
                     </select>
                     <input placeholder='Link Image In Cloudnary' type="text" name="image" value={image} onChange={(e) => setImage(e.target.value)} />
                     <input placeholder='Price' type="number" name="price" value={price} onChange={(e) => setPrice(e.target.value)} />

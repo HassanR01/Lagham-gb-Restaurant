@@ -68,8 +68,6 @@ export default async function Item({ params }) {
     return extras
   })
 
-  console.log(Extras);
-
   return (
     <section>
       <div className="itemInfo w-full flex flex-wrap justify-around items-center my-9">
@@ -80,10 +78,10 @@ export default async function Item({ params }) {
           <div className="main mb-12 relative">
             <div className="title text-2xl font-bold">
               <h2 className='text-left'>{titleEn}</h2>
-              <h2 className=' text-right'>{titleAr}</h2>
+              <h2 className='mt-3 text-right'>{titleAr}</h2>
             </div>
             <div className="price text-3xl font-bold text-green-400 absolute top-0 right-0">
-              <h4>{price} EGP</h4>
+              <h4>{price} ج.م</h4>
             </div>
             <div className="description">
               <p className='text-right text-xl'>{description}</p>
@@ -92,7 +90,7 @@ export default async function Item({ params }) {
           <AddToCart itemInfo={item} ExtrasItems={Extras} />
         </div>
       </div>
-      <a href="/" className='link'>Menu</a>
+      <a href="/" className='link'>المنيو</a>
     </section>
   )
 }
