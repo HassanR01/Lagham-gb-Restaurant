@@ -101,15 +101,15 @@ export default function EditItem({ item }) {
                     <input placeholder='Points' type="nunber" name="point" value={newpoints} onChange={(e) => setNewpoints(e.target.value)} />
                 </div>
                 <div className="checksize">
-                    <h4 className='text-lg font-medium'>Is This Item has size choice ?</h4>
-                    <p className='ml-1'>{activation === 'active' ? (<>Yes</>) : (<>No</>)}</p>
+                    <h4 className='text-lg font-medium'>هل يوجد احجام من هذا المنتج؟</h4>
+                    <p className='mx-2'>{activation === 'active' ? (<>نعم</>) : (<>لا</>)}</p>
                     <div className={`outBox ${activation}`} onClick={() => handelSizeChecker()}>
                         <div className={`inBox ${activation}`}></div>
                     </div>
                 </div>
                 <div className="showExtras">
-                    <h4 className='text-lg font-medium'>Show Extras in This Item ?</h4>
-                    <p className='ml-1'>{newshowExtras === 'active' ? (<>Yes</>) : (<>No</>)}</p>
+                    <h4 className='text-lg font-medium'>هل يمكو وضع إضافات مع المنتج؟</h4>
+                    <p className='mx-2'>{newshowExtras === 'active' ? (<>نعم</>) : (<>لا</>)}</p>
                     <div className={`outBox ${newshowExtras}`} onClick={() => handleShowExtras()}>
                         <div className={`inBox ${newshowExtras}`}></div>
                     </div>
@@ -120,7 +120,7 @@ export default function EditItem({ item }) {
                 <div className="submit flex-col">
                     <h5 className=' text-red-400 font-medium text-lg my-2'>{alert}</h5>
                     <div className="btns flex items-center justify-center w-full">
-                        <button type="submit" className='btn w-32 mr-4'>Edit</button>
+                        <button type="submit" className='btn w-32 ml-4'>Edit</button>
                         <div onClick={() => DeleteItem(item._id)} className='linkRed cursor-pointer'>Delete</div>
                     </div>
                 </div>

@@ -84,15 +84,15 @@ export default function AddItem() {
                     <input placeholder='Points' type="nunber" name="point" value={points} onChange={(e) => setPoints(e.target.value)} />
                 </div>
                 <div className="checksize">
-                    <h4 className='text-lg font-medium'>Is This Item has size choice ?</h4>
-                    <p className='ml-1'>{size === 'true' ? (<>Yes</>) : (<>No</>)}</p>
+                    <h4 className='text-lg font-medium'>هل يوجد احجام من هذا المنتج؟</h4>
+                    <p className='mx-2'>{size === 'true' ? (<>نعم</>) : (<>لا</>)}</p>
                     <div className={`outBox ${activation}`} onClick={() => handelSizeChecker()}>
                         <div className={`inBox ${activation}`}></div>
                     </div>
                 </div>
                 <div className="showExtras">
-                    <h4 className='text-lg font-medium'>Show Extras With This Item ?</h4>
-                    <p className='ml-1'>{showExtras === 'active' ? (<>Yes</>) : (<>No</>)}</p>
+                    <h4 className='text-lg font-medium'>هل يمكو وضع إضافات مع المنتج؟</h4>
+                    <p className='mx-2'>{showExtras === 'active' ? (<>نعم</>) : (<>لا</>)}</p>
                     <div className={`outBox ${showExtras}`} onClick={() => handleShowExtras()}>
                         <div className={`inBox ${showExtras}`}></div>
                     </div>

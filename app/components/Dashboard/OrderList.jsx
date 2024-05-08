@@ -21,10 +21,37 @@ const orderList = async () => {
 
 export default async function OrderList() {
     const { orders } = await orderList()
+
+    function formatDateTimeToArabic(dateStr) {
+        // Create a Date object from the given date and time strings
+        const dateTime = new Date(dateStr);
+
+        // Configure the formatter with Arabic locale and specific formatting options
+        const arabicDateTimeFormatter = new Intl.DateTimeFormat('ar', {
+            weekday: 'long', // Include weekday name (like "الأربعاء")
+            year: 'numeric', // Include year (like "٢٠٢٣")
+            month: 'long', // Full month name (like "مايو")
+            day: 'numeric', // Day of the month (like "١٠")
+            hour: 'numeric', // Hour
+            minute: 'numeric', // Minute
+            hour12: true // AM/PM format
+        });
+
+        // Return the formatted date and time in Arabic
+        return arabicDateTimeFormatter.format(dateTime);
+    }
+
+    const sortedOrders = orders.sort((a, b) => {
+        const dateA = new Date(a.createdAt); // Convert date string to Date object
+        const dateB = new Date(b.createdAt);
+        return dateA - dateB; // Compare dates
+    });
+
+
     return (
         <>
             <div className="orders w-full p-4 flex justify-center items-center flex-col-reverse sm:p-8">
-                {orders.length > 0 && orders.map(order => (
+                {sortedOrders.length > 0 && orders.map(order => (
                     <div className={`order w-full p-2 border ${order.status === 'Done' ? 'border-green-400' : order.status === 'fail' ? 'border-red-400' : 'border-gray-400'} rounded-xl my-4`} key={order._id}>
                         <div className="titles  flex flex-row items-center justify-between">
 
@@ -41,12 +68,12 @@ export default async function OrderList() {
                             <div className="payment">
                                 <h3 className='text-xl font-medium'>{order.paymentMethod}</h3>
                             </div>
-                            <div className="created hidden lg:block">
-                                <h3 className='text-xl'>{order.createdAt.slice(0, 10)} {order.createdAt.slice(12, 16)}</h3>
-                            </div>
+                        </div>
+                        <div className="created">
+                            <h3 className='text-xl'>{order.createdAt.slice(0, 10)} {formatDateTimeToArabic(order.createdAt)}</h3>
                         </div>
                         <div className="location">
-                            <h3>Location: {order.address}</h3>
+                            <h3>العنوان: {order.paymentMethod ? order.address : 'الاستلام في الفرع'}</h3>
                         </div>
                         <div className="itemsList p-4 pb-32 lg:pb-14  relative">
                             <h3 className='text-center text-xl font-semibold'>Items</h3>
@@ -56,14 +83,14 @@ export default async function OrderList() {
                                         <div className="items w-full flex justify-between items-center">
 
                                             <div className="quantity flex items-center justify-center">
-                                                <Image className='rounded-xl mr-2 w-10 h-10' src={item.itemInfo.image} width={80} height={80} alt={item.itemInfo.titleAr} />
-                                                <h3 className='text-xl font-bold'>{item.quantity} {item.itemInfo.titleEn}</h3>
+                                                <Image className='rounded-xl ml-2 w-10 h-10' src={item.itemInfo.image} width={80} height={80} alt={item.itemInfo.titleAr} />
+                                                <h3 className='text-xl font-bold'>{item.quantity} {item.itemInfo.titleAr}</h3>
                                             </div>
                                             <div className="price">
-                                                <h3 className='text-xl text-green-300 font-medium'>{item.quantity * item.itemInfo.price - (item.quantity * item.itemInfo.price * 0.1) + (item.size === 'Double' ? (item.quantity * 50 - (item.quantity * 50 * 0.1)) : 0)} EGP</h3>
+                                                <h3 className='text-xl text-green-300 font-medium'>{item.quantity * item.itemInfo.price - (item.quantity * item.itemInfo.price * 0.1) + (item.size === 'Double' ? (item.quantity * 50 - (item.quantity * 50 * 0.1)) : 0)} ج.م</h3>
                                             </div>
                                             <div className="size">
-                                                <h3>Size:</h3>
+                                                <h3>الحجم:</h3>
                                                 <h3 className='text-xl font-semibold'>{item.size}</h3>
                                             </div>
                                         </div>

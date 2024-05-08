@@ -278,8 +278,8 @@ export default function Basket() {
                 </div>
               </div>
               <div className="pay my-4 flex justify-center items-center">
-                <input className='hidden' type="radio" name="pay" id="cod" value={'cash on delivery'} onChange={(e) => setPaymentMethod(e.target.value)} />
-                <label className='sizeChoice px-3 mr-2' htmlFor="cod">Cash On Delivery</label>
+                <input className='hidden' type="radio" name="pay" id="cod" value={'الدفع عند الاستلام'} onChange={(e) => setPaymentMethod(e.target.value)} />
+                <label className='sizeChoice px-3 mr-2' htmlFor="cod">الدفع عند الاستلام</label>
               </div>
               <h5 className='font-bold text-lg text-center text-red-400 mb-4'>{alert}</h5>
 
