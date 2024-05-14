@@ -253,23 +253,29 @@ export default function Basket() {
           </div>
           {checkBranch === '' ? (
             <form className='DeleveryForm w-full flex flex-col items-center justify-center' onChange={() => setAlert('')} onSubmit={handelSendDOrderForm}>
-
               <input type="tel" name="phone" placeholder='رقم هاتفك' value={phone} onChange={(e) => setPhone(e.target.value)} />
               <div className="location w-full">
                 <select name='zone' value={zone} onChange={(e) => setZone(e.target.value)}>
                   <option value="">اختر المنطقة</option>
                   <option value="سموحة">سموحة</option>
-                  <option value="كفر عبده">كفر عبده</option>
                   <option value="سيدي جابر">سيدي جابر</option>
-                  <option value="الازاريطة">الازاريطة</option>
-                  <option value="محطة الرمل">محطة الرمل</option>
-                  <option value="محرم بك">محرم بك</option>
-                  <option value="جليم">جليم</option>
+                  <option value="كفر عبده">كفر عبده</option>
                   <option value="مصطفي كامل">مصطفي كامل</option>
                   <option value="رشدي">رشدي</option>
+                  <option value="جليم">جليم</option>
                   <option value="سان ستيفانو">سان ستيفانو</option>
+                  <option value="محمد نجيب">محمد نجيب</option>
+                  <option value="سيدي بشر">سيدي بشر</option>
+                  <option value="ميامي">ميامي</option>
+                  <option value="اسكندر ابراهيم">اسكندر ابراهيم</option>
+                  <option value="شارع 45">شارع 45</option>
+                  <option value="العصافرة">العصافرة</option>
+                  <option value="المنتزة">المنتزة</option>
+                  <option value="محرم بك">محرم بك</option>
+                  <option value="الازاريطة">الازاريطة</option>
+                  <option value="محطة الرمل">محطة الرمل</option>
+                  <option value="محطة مصر">محطة مصر</option>
                 </select>
-                <p className='text-red-400 text-xs sm:text-sm mt-1 mr-1'>* سيتم فتح المناطق من محمد نجيب الي المندرة قريباً</p>
                 <input type="text" name="street name" placeholder='اسم الشارع' value={street} onChange={(e) => setStreet(e.target.value)} />
                 <input type="text" name="building" placeholder='اسم او رقم العمارة' onChange={(e) => setBuilding(e.target.value)} />
                 <div className="apartment w-full flex items-center justify-between">
