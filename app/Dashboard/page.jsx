@@ -11,7 +11,7 @@ export const metadata = {
 
 export default function Dashboard({ searchParams }) {
     const email = searchParams.email
-    let Admins = ['m.3ezzat3295@gmail.com', 'mohamedkhalil.h9@gmail.com', 'hassanrageh.236@gmail.com']
+    let Admins = ['m.3ezzat3295@gmail.com', 'mohamedkhalil.h9@gmail.com', 'hassanrageh.236@gmail.com', 'wartaeg@gmail.com']
 
     if (Admins.includes(email)) {
 

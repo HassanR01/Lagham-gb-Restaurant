@@ -10,7 +10,7 @@ import { signIn, useSession } from 'next-auth/react'
 export default function Header() {
     const [cart, setCart] = useState([])
     const { status, data: session } = useSession()
-    let Admins = ['m.3ezzat3295@gmail.com', 'mohamedkhalil.h9@gmail.com', 'hassanrageh.236@gmail.com']
+    let Admins = ['m.3ezzat3295@gmail.com', 'mohamedkhalil.h9@gmail.com', 'hassanrageh.236@gmail.com', 'wartaeg@gmail.com']
 
     useEffect(() => {
         const CartItems = localStorage.getItem('CartItems')
