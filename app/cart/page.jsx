@@ -1,6 +1,5 @@
 'use client'
-import { signIn, useSession } from 'next-auth/react'
-import Image from 'next/image'
+import { useRouter } from 'next/navigation'
 import React, { useEffect, useState } from 'react'
 
 export default function Basket() {
@@ -17,7 +16,7 @@ export default function Basket() {
   const [checkBranch, setCheckBranch] = useState("")
   const [checkUsingPoints, setCheckUsingPoints] = useState("")
   const [alert, setAlert] = useState()
-  const { status, data: session } = useSession()
+  const router = useRouter()
 
   let location = `${zone} - ${street} - ${building} الدور ${floor} شقة رقم ${NumberOfApartment}`
 
@@ -115,6 +114,7 @@ export default function Basket() {
             const updateCart = [...cart]
             updateCart.splice(0, cart.length)
             localStorage.setItem('CartItems', JSON.stringify(updateCart))
+            router.refresh()
           } else {
             setAlert('غالباً في مشكلة')
             throw new Error('Cannot Sent The Order')
@@ -157,6 +157,7 @@ export default function Basket() {
           const updateCart = [...cart]
           updateCart.splice(0, cart.length)
           localStorage.setItem('CartItems', JSON.stringify(updateCart))
+          router.refresh()
         } else {
           setAlert('غالباً في مشكلة')
           throw new Error('Cannot Sent The Order')

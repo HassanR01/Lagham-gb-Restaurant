@@ -1,7 +1,4 @@
-import Image from 'next/image'
 import React from 'react'
-import imageFood from '../../../public/hamburger.png'
-import Link from 'next/link'
 import FilterItems from './FilterItems'
 
 const getItems = async () => {
