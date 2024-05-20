@@ -19,8 +19,8 @@ export default function ChangeOrderStatus({ id, oldstatus }) {
             })
 
             if (res.ok) {
-                router.refresh()
                 alert('Done')
+                router.refresh()
             }
 
         } catch (error) {
