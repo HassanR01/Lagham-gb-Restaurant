@@ -35,7 +35,7 @@ section {
 }
 
 nav ul li {
-  @apply font-bold text-xl relative mx-2 cursor-pointer flex flex-col justify-center items-center;
+  @apply font-bold text-xl duration-700 rounded-xl relative mx-4 px-5 py-1 cursor-pointer flex flex-col justify-center items-center;
 }
 
 nav ul li img {
@@ -43,10 +43,8 @@ nav ul li img {
 }
 
 nav ul li.selected {
-  color: yellow;
-}
-nav ul li.selected::before {
-  display: block;
+  background-color: yellow;
+  color: black;
 }
 
 .line {
@@ -54,29 +52,9 @@ nav ul li.selected::before {
   @apply w-full bg-gray-500 my-4;
 }
 
-nav ul li::before {
-  content: "";
-  position: absolute;
-  bottom: -12px;
-  left: 50%;
-  transform: translate(-50%, 0);
-  width: 8px;
-  height: 8px;
-  background-color: yellow;
-  border-radius: 50px;
-  -webkit-border-radius: 50px;
-  -moz-border-radius: 50px;
-  -ms-border-radius: 50px;
-  -o-border-radius: 50px;
-  -webkit-transform: translate(-50%, 0);
-  -moz-transform: translate(-50%, 0);
-  -ms-transform: translate(-50%, 0);
-  -o-transform: translate(-50%, 0);
-  display: none;
-}
 
 .card {
-  @apply flex flex-col items-center justify-center text-center m-5 w-80 min-h-80 overflow-hidden relative;
+  @apply flex flex-col items-center justify-center rounded-lg text-center m-5 w-80 min-h-80 overflow-hidden relative;
   display: none;
 }
 .card.item.show {
@@ -320,7 +298,7 @@ textarea {
     width: 60px;
     background: linear-gradient(
       270deg,
-      rgba(255, 255, 255, 0) 0%,
+      rgba(0, 0, 0, 0) 0%,
       rgba(3, 7, 18, 1) 91%
     );
     top: 0;
@@ -335,7 +313,7 @@ textarea {
     width: 60px;
     background: linear-gradient(
       90deg,
-      rgba(255, 255, 255, 0) 0%,
+      rgba(0, 0, 0, 0) 0%,
       rgba(3, 7, 18, 1) 91%
     );
     top: 0;
@@ -344,7 +322,7 @@ textarea {
   }
 
   #Menu .menuList nav ul li {
-    min-width: 180px;
+    min-width: 120px;
   }
 
   #Menu .menuList .items .card {

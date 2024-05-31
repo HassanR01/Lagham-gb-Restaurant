@@ -3,7 +3,6 @@ import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
 import bgImage from '../../../public/bg.png'
 import Image from 'next/image'
-import basketIcon from '../../../public/basket.svg'
 import logo from '../../../public/logo.png'
 import { signIn, useSession } from 'next-auth/react'
 
@@ -13,10 +12,14 @@ export default function Header() {
     let Admins = ['m.3ezzat3295@gmail.com', 'mohamedkhalil.h9@gmail.com', 'hassanrageh.236@gmail.com', 'wartaeg@gmail.com']
 
     useEffect(() => {
-        const CartItems = localStorage.getItem('CartItems')
-        if (CartItems) {
-            setCart(JSON.parse(CartItems))
-        }
+        const time = setInterval(() => {
+
+            const CartItems = localStorage.getItem('CartItems')
+            if (CartItems) {
+                setCart(JSON.parse(CartItems))
+            }
+        }, 100);
+
     }, [])
 
 
@@ -46,7 +49,7 @@ export default function Header() {
             </div>
 
             <div className="image absolute -bottom-32 left-2/4 -translate-x-1/2 flex flex-col items-center justify-center text-center w-full">
-                <Image src={logo} width={120} height={120} alt='Lagham logo' className='bg-gray-950 rounded-full border-gray-50 border-4 mb-3' />
+                <Image src={logo} width={120} height={120} alt='Lagham logo' className='bg-bgColor rounded-full border-gray-50 border-4 mb-3' />
                 <h4 className='title text-textColor text-2xl mb-2 font-bold '>مطعم ورطة - Warta Restaurant</h4>
                 <div className='text text-sm text-gray-400 font-semibold flex flex-row items-center justify-center'>
                     <Link href={'https://maps.app.goo.gl/cWXUnk4yYSSuN5Nv5'} className='mx-1 underline'>موقعنا علي خرائط جوجل</Link>|
