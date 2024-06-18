@@ -21,7 +21,7 @@ export async function POST(req) {
 
     const mailOptions = {
         from: process.env.GMAIL_USER,
-        to: ['m.3ezzat3295@gmail.com', 'mohamedkhalil.h9@gmail.com', 'hassanrageh.236@gmail.com', 'wartaeg@gmail.com'],
+        to: ['m.3ezzat3295@gmail.com', 'mohamedkhalil.h9@gmail.com', 'hassanrageh.236@gmail.com', 'wartaeg@gmail.com', 'ym983104@gmail.com'],
         subject: 'New Order Placed In Warta',
         text: `A new order has been placed:\n\nPhone Number: ${phoneNum}\nTotal Price: ${totalPrice} EGP\nPayment Method: ${paymentMethod || 'بالفعل في الفرع'}`,
     };
