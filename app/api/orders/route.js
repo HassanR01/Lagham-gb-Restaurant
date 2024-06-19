@@ -8,7 +8,7 @@ export async function POST(req) {
     
     const { name, email, image, items, totalPrice, phoneNum, address, paymentMethod , status } = await req.json()
     await connectMongoDB()
-    const order = await Order.create({ name, email, image, items, totalPrice, phoneNum, address, paymentMethod, status })
+    await Order.create({ name, email, image, items, totalPrice, phoneNum, address, paymentMethod, status })
 
     // Send email notification to admins
     const transporter = nodemailer.createTransport({
@@ -29,10 +29,10 @@ export async function POST(req) {
     transporter.sendMail(mailOptions, (error, info) => {
         if (error) {
             console.log(error);
-            res.status(500).json({ message: 'Error sending email' });
+            res.status(500).json({ message: 'Error sending email'});
         } else {
             console.log('Email sent: ' + info.response);
-            res.status(200).json({ message: 'Order placed and email sent' });
+            res.status(200).json({ message: 'Order placed and email sent'});
         }
     });
 
