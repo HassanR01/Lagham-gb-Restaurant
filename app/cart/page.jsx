@@ -49,7 +49,7 @@ export default function Basket() {
 
   const orders = {
     items: [...cart],
-    totalPrice: Math.floor((totalPrice - (totalPrice * 0.1)) + (checkBranch === 'active' ? 0 : 35)),
+    totalPrice: Math.floor((totalPrice) + (checkBranch === 'active' ? 0 : 35)),
     phoneNum: phone,
     address: location,
     paymentMethod: paymentMethod
@@ -241,9 +241,9 @@ export default function Basket() {
             )}
             <div className="line"></div>
             <h2 className='text-xl font-medium flex items-center justify-between'><span className='text-gray-400 text-lg'>المجموع المبدأي</span> <span>{totalPrice} ج.م</span></h2>
-            <h2 className='text-lg font-medium flex items-center justify-between text-red-400 mt-1'><span className='text-gray-400 text-lg'>الخصم</span> <span>10%-</span></h2>
+            {/* <h2 className='text-lg font-medium flex items-center justify-between text-red-400 mt-1'><span className='text-gray-400 text-lg'>الخصم</span> <span>10%-</span></h2> */}
             {checkBranch === '' && (<h2 className='text-lg font-medium flex items-center justify-between text-green-300'><span className='text-gray-400 text-lg'>التوصيل</span> <span>35 ج.م</span></h2>)}
-            <h2 className='text-xl font-semibold flex items-center justify-between text-green-300 my-2'><span className='text-gray-50 text-xl'>المجموع النهائي</span> <span>{Math.floor((totalPrice - (totalPrice * 0.1)) + (checkBranch === 'active' ? 0 : 35))} ج.م</span></h2>
+            <h2 className='text-xl font-semibold flex items-center justify-between text-green-300 my-2'><span className='text-gray-50 text-xl'>المجموع النهائي</span> <span>{Math.floor((totalPrice) + (checkBranch === 'active' ? 0 : 35))} ج.م</span></h2>
           </div>
           <div className="line"></div>
           <div className="check flex w-full justify-between items-center">

@@ -112,7 +112,7 @@ export default function OrderList() {
                                                     <h3 className='text-xl font-bold'>{item.quantity} {item.itemInfo.titleAr}</h3>
                                                 </div>
                                                 <div className="price">
-                                                    <h3 className='text-xl text-green-300 font-medium'>{item.quantity * item.itemInfo.price - (item.quantity * item.itemInfo.price * 0.1) + (item.size === 'Double' ? (item.quantity * 50 - (item.quantity * 50 * 0.1)) : 0)} ج.م</h3>
+                                                    <h3 className='text-xl text-green-300 font-medium'>{item.quantity * item.itemInfo.price + (item.size === 'Double' ? (item.quantity * 50) : 0)} ج.م</h3>
                                                 </div>
                                                 <div className="size">
                                                     <h3>الحجم:</h3>
